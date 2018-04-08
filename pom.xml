@@ -21,6 +21,7 @@
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-servlet-api</artifactId>
             <version>7.0.64</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -193,7 +194,6 @@
             <version>0.9.4</version>
         </dependency>
 
-        <!--druid连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
