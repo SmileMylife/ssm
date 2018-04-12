@@ -151,11 +151,14 @@
       update_time = NOW()
     where id = #{id,jdbcType=INTEGER}
   </update>
-    <!--校验用户名是否唯一-->
+    <!--查询用户信息-->
     <select id="queryUser" parameterType="string" resultType="user">
         select
         <include refid="Base_Column_List"/>
-        FROM MMALL_USER WHERE username = #{username} and password = #{password}
+        FROM MMALL_USER WHERE username = #{username}
+        <if test="password != null and password != ''">
+            and password = #{password}
+        </if>
     </select>
     <!--查询用户数量-->
     <select id="checkUsername" resultType="java.lang.Integer" parameterType="string">

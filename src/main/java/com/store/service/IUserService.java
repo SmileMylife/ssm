@@ -15,4 +15,10 @@ public interface IUserService {
 
     //注册
     ServerResponse<String> register(User user, String rePassword);
+
+    //密码修改
+    ServerResponse<String> modifyPassword(String username, String oldPassword, String newPassword, String rePassword);
+
+    //查询密保问题
+    ServerResponse<User> queryQuestion(String username);
 }

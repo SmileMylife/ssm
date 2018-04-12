@@ -30,7 +30,7 @@ public class UserServiceImpl implements IUserService {
         if (user == null) {
             return ServerResponse.createByErrorMessage("用户名或密码错误");
         }
-        return ServerResponse.createBySuccessMessage("登录成功");
+        return ServerResponse.createBySuccess("登录成功", user);
     }
 
     //参数校验
@@ -99,5 +99,50 @@ public class UserServiceImpl implements IUserService {
             }
         }
         return response;
+    }
+
+    //修改密码
+    @Override
+    public ServerResponse<String> modifyPassword(String username, String oldPassword, String newPassword, String rePassword) {
+        if (username == null) {
+            return ServerResponse.createByErrorMessage("用户名不能为空");
+        }
+        if (StringUtils.isBlank(oldPassword)) {
+            return ServerResponse.createByErrorMessage("旧密码不能为空");
+        }
+        if (StringUtils.isBlank(newPassword)) {
+            return ServerResponse.createByErrorMessage("新密码不能为空");
+        }
+        if (StringUtils.isBlank(rePassword)) {
+            return ServerResponse.createByErrorMessage("重复密码不能为空");
+        }
+        //检查旧密码是否正确
+        String MD5OldPassword = MD5Util.MD5EncodeUtf8(oldPassword);
+        User user = userMapper.queryUser(username,MD5OldPassword);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("您输入的旧密码不正确");
+        }
+        //判断两次新密码是否一致
+        if (!newPassword.equals(rePassword)) {
+            return ServerResponse.createByErrorMessage("两次新密码不一致");
+        }
+        //更新密码
+        String MD5NewPassword = MD5Util.MD5EncodeUtf8(newPassword);
+        user.setPassword(MD5NewPassword);
+        int i = userMapper.updateByPrimaryKey(user);
+        if (i > 0) {
+            return ServerResponse.createBySuccessMessage("密码修改成功");
+        }
+        return ServerResponse.createByErrorMessage("系统出错，请重新修改");
+    }
+
+    //查询用户密保问题
+    @Override
+    public ServerResponse<User> queryQuestion(String username) {
+        if (username == null) {
+            return ServerResponse.createByErrorMessage("请先填写用户名");
+        }
+        User user = userMapper.queryUser(username, "");
+        return ServerResponse.createBySuccess("查询成功", user);
     }
 }

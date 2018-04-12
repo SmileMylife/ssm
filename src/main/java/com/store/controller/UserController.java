@@ -1,16 +1,18 @@
 package com.store.controller;
 
+import com.store.common.Const;
 import com.store.common.ServerResponse;
 import com.store.pojo.User;
 import com.store.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 
 /**
@@ -25,8 +27,13 @@ public class UserController {
     //登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> login(String username, String password) {
+    public ServerResponse<User> login(String username, String password, HttpSession httpSession) {
         ServerResponse<User> response = iUserService.login(username, password);
+        User user = response.getData();
+        user.setPassword(null);
+        if (response.isSuccess()) {
+            httpSession.setAttribute(Const.CURRENT_USER, user);
+        }
         return response;
     }
 
@@ -54,4 +61,19 @@ public class UserController {
         return response;
     }
 
+    //重置密码
+    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> modifyPassword(String username, String oldPassword, String newPassword, String rePassword) {
+        ServerResponse<String> response = iUserService.modifyPassword(username, oldPassword, newPassword, rePassword);
+        return response;
+    }
+
+    //点击忘记密码，查询密保问题(一种是登录状态的一种是不登录状态的)
+    @RequestMapping(value = "/queryQuestion", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<User> queryQuestion(String username) {
+        ServerResponse<User> response = iUserService.queryQuestion(username);
+        return response;
+    }
 }

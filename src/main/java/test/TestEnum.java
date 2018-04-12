@@ -1,6 +1,7 @@
 package test;
 
 import com.store.common.ResponseCode;
+import com.store.utils.MD5Util;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.regex.Matcher;
@@ -59,5 +60,9 @@ public class TestEnum {
         System.err.print(notEmpty3 + "\t");
         boolean notBlank3 = StringUtils.isNotBlank("   zhangsan");
         System.err.print(notBlank3 + "\t");
+
+        String s = MD5Util.MD5EncodeUtf8("123");
+        System.err.println(s);
+
     }
 }
