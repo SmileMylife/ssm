@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="6b91c46d-651a-4e6f-a2ad-6d44b9239909" name="Default" comment="测试fastjson">
       <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ssm_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ssm_war_exploded.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/ssm.iml" afterPath="$PROJECT_DIR$/ssm.iml" />
+=======
+    <list default="true" id="6b91c46d-651a-4e6f-a2ad-6d44b9239909" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> origin/master
       <change beforePath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -101,6 +106,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/main/java/test/DuckTest.java" />
+>>>>>>> origin/master
         <option value="$PROJECT_DIR$/src/main/java/test/LittleYellowDuck.java" />
         <option value="$PROJECT_DIR$/src/main/java/BaseQuery.java" />
         <option value="$PROJECT_DIR$/src/main/java/Criterion.java" />
@@ -151,7 +160,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/store/controller/UserController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/store/service/impl/TestCode.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/.gitignore" />
+=======
+>>>>>>> origin/master
       </list>
     </option>
   </component>
@@ -285,6 +297,41 @@
             <path>
               <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
               <item name="ssm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -459,7 +506,11 @@
       <workItem from="1523151102753" duration="11795000" />
       <workItem from="1523194418597" duration="3853000" />
       <workItem from="1524799007046" duration="137000" />
+<<<<<<< HEAD
       <workItem from="1525483150608" duration="1973000" />
+=======
+      <workItem from="1525483150608" duration="1517000" />
+>>>>>>> origin/master
     </task>
     <task id="LOCAL-00001" summary="good">
       <created>1523023482274</created>
@@ -496,6 +547,7 @@
       <option name="project" value="LOCAL" />
       <updated>1525484926648</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00006" summary="测试fastjson">
       <created>1525484955604</created>
       <option name="number" value="00006" />
@@ -508,6 +560,13 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="81723000" />
+=======
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="81267000" />
+>>>>>>> origin/master
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="812" extended-state="6" />
@@ -528,7 +587,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32775453" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> origin/master
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32775453" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -639,6 +702,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/store/domain/User.java" />
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/src/main/java/com/baidu/dao/impl/UserDaoImpl.java" />
     <entry file="jar://$USER_HOME$/Desktop/javaDevlopmentSoftware/repository/org/springframework/spring-webmvc/4.1.4.RELEASE/spring-webmvc-4.1.4.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -844,6 +911,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/test/TestSpring.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/test/TestGit.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
@@ -852,6 +920,16 @@
     </entry>
     <entry file="jar://$USER_HOME$/Desktop/javaDevlopmentSoftware/Myrepository/org/mybatis/mybatis-spring/1.3.0/mybatis-spring-1.3.0.jar!/org/mybatis/spring/SqlSessionFactoryBean.class">
       <provider selected="true" editor-type-id="text-editor">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/javaDevlopmentSoftware/Myrepository/org/mybatis/mybatis-spring/1.3.0/mybatis-spring-1.3.0.jar!/org/mybatis/spring/SqlSessionFactoryBean.class">
+      <provider selected="true" editor-type-id="text-editor">
+>>>>>>> origin/master
         <state relative-caret-position="-1579">
           <caret line="63" column="54" lean-forward="true" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
         </state>
@@ -917,6 +995,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="645" column="30" lean-forward="false" selection-start-line="645" selection-start-column="30" selection-end-line="645" selection-end-column="30" />
+<<<<<<< HEAD
           <folding />
         </state>
       </provider>
@@ -936,22 +1015,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+=======
+>>>>>>> origin/master
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/store/service/impl/TestCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#395#411#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-303">
+=======
+        <state relative-caret-position="512">
+>>>>>>> origin/master
           <caret line="247" column="45" lean-forward="false" selection-start-line="247" selection-start-column="45" selection-end-line="247" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/TestJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+>>>>>>> origin/master
           <folding />
         </state>
       </provider>
