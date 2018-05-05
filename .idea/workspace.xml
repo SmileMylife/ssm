@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b91c46d-651a-4e6f-a2ad-6d44b9239909" name="Default" comment="测试fastjson">
+    <list default="true" id="6b91c46d-651a-4e6f-a2ad-6d44b9239909" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" afterPath="$PROJECT_DIR$/target/classes/SqlMapConfig.xml" />
     </list>
@@ -489,7 +489,7 @@
       <workItem from="1523151102753" duration="11795000" />
       <workItem from="1523194418597" duration="3853000" />
       <workItem from="1524799007046" duration="137000" />
-      <workItem from="1525483150608" duration="1488000" />
+      <workItem from="1525483150608" duration="1517000" />
     </task>
     <task id="LOCAL-00001" summary="good">
       <created>1523023482274</created>
@@ -519,11 +519,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525484409339</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="测试fastjson">
+      <created>1525484926648</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525484926648</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81238000" />
+    <option name="totallyTimeSpent" value="81267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="812" extended-state="6" />
