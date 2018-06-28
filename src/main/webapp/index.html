@@ -6,10 +6,22 @@
 </head>
 <body>
     <h1>首页</h1>
-    <form action="/ssm/login" method="get">
+    <form action="/ssm/login" method="POST">
         <input type="text" name="username"/>
         <input type="password" name="password"/>
         <input type="submit" value="提交"/>
     </form>
+    <button id="test">测试ajax</button>
 </body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    var data = [{"username":"zhangsan"},{"username":"lisi"}];
+    $(document).ready(function() {
+        $("#test").click(function() {
+            $.ajax({"type":"POST", "data":JSON.stringify(data), "url":"flySeay", "dataType":"json", "success":function(data) {
+                    alert(data);
+                }})
+        })
+    })
+</script>
 </html>
