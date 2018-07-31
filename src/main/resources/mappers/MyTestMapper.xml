@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.dao.ITestDao">
+    <resultMap id="BaseResultMap" type="map">
+            <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
+            <id column="username" javaType="java.lang.String" property="username" jdbcType="VARCHAR"/>
+            <id column="password" javaType="java.lang.String" property="password" jdbcType="VARCHAR"/>
+            <id column="email" javaType="java.lang.String" property="email" jdbcType="VARCHAR"/>
+            <id column="phone" javaType="java.lang.String" property="phone" jdbcType="VARCHAR"/>
+            <id column="question" javaType="java.lang.String" property="question" jdbcType="VARCHAR"/>
+            <id column="answer" javaType="java.lang.String" property="answer" jdbcType="VARCHAR"/>
+            <id column="role" javaType="java.lang.Integer" property="role" jdbcType="INTEGER"/>
+            <id column="create_time" javaType="java.util.Date" property="createTime" jdbcType="TIMESTAMP"/>
+            <id column="update_time" javaType="java.util.Date" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, username, password, email, phone, question, answer, role, create_time, update_time
+    </sql>
+    <select id="showUsers" resultType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM MMALL_USER
+    </select>
+    <select id="queryUsers" resultType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM MMALL_USER
+    </select>
+</mapper>

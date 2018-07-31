@@ -2,6 +2,7 @@ package com.store.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by ZhangPei on 2018/6/22.
@@ -10,7 +11,7 @@ public class OutputObject {
     private String rtnCode;
     private String rtnMsg;
     private HashMap<String, Object> bean = new HashMap<String, Object>();
-    private ArrayList<HashMap<String, Object>> beans = new ArrayList<HashMap<String, Object>>();
+    private List<HashMap<String, Object>> beans = new ArrayList<HashMap<String, Object>>();
     private Object object;
 
     public String getRtnCode() {
@@ -37,11 +38,11 @@ public class OutputObject {
         this.bean = bean;
     }
 
-    public ArrayList<HashMap<String, Object>> getBeans() {
+    public List<HashMap<String, Object>> getBeans() {
         return beans;
     }
 
-    public void setBeans(ArrayList<HashMap<String, Object>> beans) {
+    public void setBeans(List<HashMap<String, Object>> beans) {
         this.beans = beans;
     }
 

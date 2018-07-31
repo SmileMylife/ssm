@@ -6,9 +6,11 @@ import org.apache.commons.lang3.StringUtils;
  * Created by ZhangPei on 2018/7/12.
  */
 public class TestCheck {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String name = checkAcceptStaff(null, "张三是坏人", 20);
         System.out.println(name);
+
+        testJudge("", "1232131", "12321312");
     }
 
     public static String checkAcceptStaff(String id, String name,int lenth) {
@@ -30,5 +32,11 @@ public class TestCheck {
             }
         }
         return str;
+    }
+
+    public static void testJudge(String provCode, String wrkfmId, String srvReqstId) throws Exception {
+        if (org.apache.commons.lang.StringUtils.isBlank(provCode) || (org.apache.commons.lang.StringUtils.isBlank(wrkfmId) && org.apache.commons.lang.StringUtils.isBlank(srvReqstId))) {
+            throw new Exception("搬表失败，省份编码或工单ID或服务请求ID为空");
+        }
     }
 }

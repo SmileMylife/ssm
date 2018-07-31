@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import test.project.inter.CreateOutSysFactory;
+import test.project.inter.IOutSysServiceRequestAccept;
 
 import java.util.HashMap;
 
@@ -17,7 +19,7 @@ import java.util.HashMap;
  */
 @Controller
 @RequestMapping("/outSys")
-public class OutSysServiceRequestAccept {
+public class OutSysServiceRequestAccept implements IOutSysServiceRequestAccept {
     @Autowired
     private CreateOutSysFactory createOutSysFactory;
 
@@ -73,6 +75,18 @@ public class OutSysServiceRequestAccept {
             throw new Exception("系统编码为空");
         }
         createOutSysFactory.createOutSys(sysCode).midAdviceOutSys(inputObject, outputObject);
+    }
+
+    /**
+     * 测试rest请求
+     * @param inputObject
+     * @param outputObject
+     */
+    @RequestMapping(value = "/testRest", method = RequestMethod.POST)
+    @ResponseBody
+    public Object testRest(String inputObject, String outputObject) {
+        System.out.println("测试开始");
+        return null;
     }
 
 }

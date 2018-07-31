@@ -2,6 +2,7 @@ package test.aop;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import test.project.inter.IOutSysServiceRequestAccept;
 
 /**
  * Created by ZhangPei on 2018/5/12.
@@ -9,8 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestSwitch {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        IcallOutSysService icallOutSysServiceImpl = (IcallOutSysService) applicationContext.getBean("icallOutSysServiceImpl");
-        Object str = icallOutSysServiceImpl.callOutSys("入参string");
+        IOutSysServiceRequestAccept outSysServiceRequestAccept = (IOutSysServiceRequestAccept) applicationContext.getBean("outSysServiceRequestAccept");
+        Object str = outSysServiceRequestAccept.testRest("1", "2");
+
         System.out.println(str);
     }
 }

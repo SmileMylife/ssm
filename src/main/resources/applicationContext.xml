@@ -20,7 +20,7 @@
 
     <!--开启dao层mapper扫描-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.store.dao" />
+        <property name="basePackage" value="com.store.dao, test.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
@@ -62,6 +62,9 @@
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:SqlMapConfig.xml" />
         <property name="mapperLocations" value="classpath:mappers/*.xml" />
+    </bean>
+    <bean id="sqlSession" class = "org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
     <import resource="myTestSpring.xml" />
 </beans>

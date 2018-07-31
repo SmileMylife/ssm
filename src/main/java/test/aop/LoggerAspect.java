@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class LoggerAspect {
     private static final Logger logger = LoggerFactory.getLogger(LoggerAspect.class);
 
-    @Pointcut("execution(String test.project.OutSysServiceRequestAccept.sendToOutSys(..))")
+    @Pointcut("execution(void test.project.OutSysServiceRequestAccept.testRest(..))")
     public void aspect() {
 
     }
