@@ -89,8 +89,16 @@ public class TestController {
         autoSendThread.run();
     }
 
+    @RequestMapping(value = "testTransational", method = RequestMethod.POST)
+    @ResponseBody
     //测试事务管理
     public void testTransational(InputObject inputObject, OutputObject outputObject) {
-
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("id", "1");
+        map.put("username", "ZHAIY");
+        map.put("password", "12313");
+        map.put("user", "user");    //表名
+        inputObject.setParams(map);
+        iTestService.testTransational(inputObject, outputObject);
     }
 }

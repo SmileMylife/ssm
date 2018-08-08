@@ -16,11 +16,13 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!--扫描spring注解管理的类-->
-    <context:component-scan base-package="test"/>
+    <context:component-scan base-package="test" />
+    <!--开启注解-->
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
     <!--task-->
-    <task:scheduled-tasks>
+    <!--<task:scheduled-tasks>
         <task:scheduled ref="autoSendTask" method="autoSend" cron="*/5 * * * * ?"/>
-    </task:scheduled-tasks>
+    </task:scheduled-tasks>-->
 
     <aop:aspectj-autoproxy/>
 

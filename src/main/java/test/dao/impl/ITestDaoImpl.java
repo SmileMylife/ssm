@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Created by ZhangPei on 2018/7/28.
  */
-public class ITestDaoImpl implements ITestDao {
+/*public class ITestDaoImpl implements ITestDao {
     @Autowired
     @Qualifier("sqlSession")
     private SqlSession sqlSession;
@@ -45,4 +45,4 @@ public class ITestDaoImpl implements ITestDao {
     public void insertUser(Map<String, Object> map) {
 
     }
-}
+}*/

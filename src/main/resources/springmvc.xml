@@ -16,8 +16,9 @@
 
     <!--处理静态资源-->
     <mvc:resources mapping="/**" location="/" />
+    <!--conroller类必须配置在springMVC配置文件中，springMVC配置文件中只用扫描controller-->
     <context:component-scan base-package="com" />
-    <context:component-scan base-package="test" />
+    <context:component-scan base-package="test.controller" />
 
     <!-- 生成注解映射器和适配器，可以防止返回乱码-->
     <mvc:annotation-driven>
