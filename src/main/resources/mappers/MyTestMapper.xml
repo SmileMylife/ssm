@@ -16,6 +16,30 @@
     <sql id="Base_Column_List">
         id, username, password, email, phone, question, answer, role, create_time, update_time
     </sql>
+    <insert id="insertUser">
+        INSERT INTO ${user} VALUES
+        <if test="id != null and id != ''">
+            (#{id},
+        </if>
+        <if test="username != null and username != ''">
+            #{username},
+        </if>
+        <if test="password != null and username != ''">
+            #{password})
+        </if>
+    </insert>
+    <update id="updateUser">
+        UPDATE  ${user} SET
+        <if test="username != null and username != ''">
+            username = #{username}
+        </if>
+        <if test="password != null and password != ''">
+            password = #{password}
+        </if>
+        <where>
+            id = #{id}
+        </where>
+    </update>
     <select id="showUsers" resultType="map" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />
@@ -25,5 +49,8 @@
         SELECT
         <include refid="Base_Column_List" />
         FROM MMALL_USER
+    </select>
+    <select id="insertDatas" parameterType="map" resultMap="BaseResultMap">
+
     </select>
 </mapper>

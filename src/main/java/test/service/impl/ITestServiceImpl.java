@@ -25,4 +25,9 @@ public class ITestServiceImpl implements ITestService {
         outputObject.setBeans(beans);
 
     }
+
+    @Override
+    public void testTransational(InputObject inputObject, OutputObject outputObject) {
+
+    }
 }

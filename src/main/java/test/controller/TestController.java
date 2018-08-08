@@ -87,6 +87,10 @@ public class TestController {
     public void testAtuoSend(String rltSysCode) {
         AutoSendThread autoSendThread = new AutoSendThread(autoSendServiceFactory, rltSysCode);
         autoSendThread.run();
+    }
+
+    //测试事务管理
+    public void testTransational(InputObject inputObject, OutputObject outputObject) {
 
     }
 }

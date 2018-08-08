@@ -20,7 +20,7 @@
 
     <!--开启dao层mapper扫描-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.store.dao, test.dao" />
+        <property name="basePackage" value="com.store.dao, test.dao, test.mysqltest" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

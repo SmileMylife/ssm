@@ -10,6 +10,7 @@ import test.dao.ITestDao;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ZhangPei on 2018/7/28.
@@ -28,5 +29,20 @@ public class ITestDaoImpl implements ITestDao {
     @Override
     public List<HashMap<String, Object>> queryUsers(InputObject inputObject, OutputObject outputObject) {
         return null;
+    }
+
+    @Override
+    public void insertDatas(Map<String, Object> map) {
+
+    }
+
+    @Override
+    public void updateUser(Map<String, Object> map) {
+
+    }
+
+    @Override
+    public void insertUser(Map<String, Object> map) {
+
     }
 }
