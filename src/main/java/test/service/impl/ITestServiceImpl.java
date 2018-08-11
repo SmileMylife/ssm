@@ -3,9 +3,11 @@ package test.service.impl;
 import com.store.common.InputObject;
 import com.store.common.OutputObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import test.dao.ITestDao;
+import test.dbswitch.DataSourceHandle;
 import test.service.ITestService;
 
 import java.io.IOException;
@@ -17,7 +19,6 @@ import java.util.Map;
  * Created by ZhangPei on 2018/7/28.
  */
 @Service
-@Transactional
 public class ITestServiceImpl implements ITestService {
     @Autowired
     private ITestDao itestDao;

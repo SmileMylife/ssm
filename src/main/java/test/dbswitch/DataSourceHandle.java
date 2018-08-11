@@ -1,7 +1,5 @@
 package test.dbswitch;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Created by ZhangPei on 2018/8/9.
  */
@@ -16,5 +14,10 @@ public class DataSourceHandle {
     //设置省份编码
     public static void setProvCode(String provCode) {
         threadLocal.set(provCode);
+    }
+
+    //删除当前数据源
+    public static void removeProvCode() {
+        threadLocal.remove();
     }
 }

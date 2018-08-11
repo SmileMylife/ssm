@@ -1,9 +1,6 @@
 package test.dbswitch;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
 
 /**
  * 动态切库实现类

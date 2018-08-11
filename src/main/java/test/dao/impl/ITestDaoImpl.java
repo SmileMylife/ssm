@@ -5,7 +5,9 @@ import com.store.common.OutputObject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 import test.dao.ITestDao;
+import test.dbswitch.DataSourceHandle;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,7 +17,8 @@ import java.util.Map;
 /**
  * Created by ZhangPei on 2018/7/28.
  */
-/*public class ITestDaoImpl implements ITestDao {
+/*@Repository
+public class ITestDaoImpl implements ITestDao {
     @Autowired
     @Qualifier("sqlSession")
     private SqlSession sqlSession;
@@ -44,5 +47,12 @@ import java.util.Map;
     @Override
     public void insertUser(Map<String, Object> map) {
 
+    }
+
+    @Override
+    public List<HashMap<String, Object>> queryUser(Map<String, Object> map) {
+        DataSourceHandle.setProvCode("dataSource1");
+        List<HashMap<String, Object>> result = sqlSession.selectList("test.dao.ITestDao.queryUser", map);
+        return result;
     }
 }*/
