@@ -101,4 +101,23 @@ public class TestController {
         inputObject.setParams(map);
         iTestService.testTransational(inputObject, outputObject);
     }
+
+    //测试文件上传
+    @RequestMapping(value = "fileUpload", method = RequestMethod.POST)
+    @ResponseBody
+    public void fileUpload(InputObject inputObject, OutputObject outputObject) {
+
+    }
+
+    //测试动态切库
+    @RequestMapping(value = "switchDatasource", method = RequestMethod.POST)
+    @ResponseBody
+    public void switchDatasource(InputObject inputObject, OutputObject outputObject, String provCode) {
+        inputObject.getParams().put("provCode", provCode);
+        inputObject.getParams().put("user", "user");
+        iTestService.switchDatasource(inputObject, outputObject);
+        List<HashMap<String, Object>> beans = outputObject.getBeans();
+        System.out.println(beans.toString());
+    }
+
 }

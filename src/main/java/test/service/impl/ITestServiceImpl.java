@@ -11,6 +11,7 @@ import test.service.ITestService;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ZhangPei on 2018/7/28.
@@ -44,5 +45,13 @@ public class ITestServiceImpl implements ITestService {
         itestDao.insertUser(params);
 
 //        throw new RuntimeException("运行时异常");
+    }
+
+    //测试动态切库
+    @Override
+    public void switchDatasource(InputObject inputObject, OutputObject outputObject) {
+        HashMap<String, Object> params = inputObject.getParams();
+        List<HashMap<String, Object>> users = itestDao.queryUser(params);
+        outputObject.setBeans(users);
     }
 }

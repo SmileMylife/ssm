@@ -13,8 +13,18 @@
             <id column="create_time" javaType="java.util.Date" property="createTime" jdbcType="TIMESTAMP"/>
             <id column="update_time" javaType="java.util.Date" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
+    <!--add by zhangpei-->
+    <resultMap id="user" type="map">
+        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id" />
+        <id column="username" javaType="java.lang.String" jdbcType="VARCHAR" property="username" />
+        <id column="password" javaType="java.lang.String" jdbcType="VARCHAR" property="password" />
+    </resultMap>
     <sql id="Base_Column_List">
         id, username, password, email, phone, question, answer, role, create_time, update_time
+    </sql>
+    <!--add by zhangpei-->
+    <sql id="user">
+        id, username, password
     </sql>
     <insert id="insertUser">
         INSERT INTO ${user} VALUES
@@ -52,5 +62,10 @@
     </select>
     <select id="insertDatas" parameterType="map" resultMap="BaseResultMap">
 
+    </select>
+    <select id="queryUser" parameterType="map" resultMap="user" resultType="list">
+        SELECT
+        <include refid="user" />
+        FROM ${user}
     </select>
 </mapper>

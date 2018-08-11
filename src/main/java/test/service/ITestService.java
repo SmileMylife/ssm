@@ -11,4 +11,5 @@ import java.io.IOException;
 public interface ITestService {
     public void showUsers(InputObject inputObject, OutputObject outputObject) throws IOException;
     public void testTransational(InputObject inputObject, OutputObject outputObject);
+    public void switchDatasource(InputObject inputObject, OutputObject outputObject);
 }

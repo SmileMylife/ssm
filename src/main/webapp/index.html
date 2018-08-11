@@ -13,6 +13,10 @@
     </form>
     <button id="test">测试ajax</button>
     <button id="showUsers">显示用户列表</button>
+    <form action="/ssm/fileUpload" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" value="提交" />
+    </form>
 </body>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -40,7 +44,6 @@
             $.post("/ssm/showUsers", function(data, status) {
                 console.log(data);
                 console.log(status);
-
             })
         })
     })
