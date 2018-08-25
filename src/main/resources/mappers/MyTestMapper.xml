@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test.dao.ITestDao">
     <resultMap id="BaseResultMap" type="map">
-            <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
-            <id column="username" javaType="java.lang.String" property="username" jdbcType="VARCHAR"/>
-            <id column="password" javaType="java.lang.String" property="password" jdbcType="VARCHAR"/>
-            <id column="email" javaType="java.lang.String" property="email" jdbcType="VARCHAR"/>
-            <id column="phone" javaType="java.lang.String" property="phone" jdbcType="VARCHAR"/>
-            <id column="question" javaType="java.lang.String" property="question" jdbcType="VARCHAR"/>
-            <id column="answer" javaType="java.lang.String" property="answer" jdbcType="VARCHAR"/>
-            <id column="role" javaType="java.lang.Integer" property="role" jdbcType="INTEGER"/>
-            <id column="create_time" javaType="java.util.Date" property="createTime" jdbcType="TIMESTAMP"/>
-            <id column="update_time" javaType="java.util.Date" property="updateTime" jdbcType="TIMESTAMP"/>
+        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
+        <id column="username" javaType="java.lang.String" property="username" jdbcType="VARCHAR"/>
+        <id column="password" javaType="java.lang.String" property="password" jdbcType="VARCHAR"/>
+        <id column="email" javaType="java.lang.String" property="email" jdbcType="VARCHAR"/>
+        <id column="phone" javaType="java.lang.String" property="phone" jdbcType="VARCHAR"/>
+        <id column="question" javaType="java.lang.String" property="question" jdbcType="VARCHAR"/>
+        <id column="answer" javaType="java.lang.String" property="answer" jdbcType="VARCHAR"/>
+        <id column="role" javaType="java.lang.Integer" property="role" jdbcType="INTEGER"/>
+        <id column="create_time" javaType="java.util.Date" property="createTime" jdbcType="TIMESTAMP"/>
+        <id column="update_time" javaType="java.util.Date" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <!--add by zhangpei-->
     <resultMap id="user" type="map">
-        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id" />
-        <id column="username" javaType="java.lang.String" jdbcType="VARCHAR" property="username" />
-        <id column="password" javaType="java.lang.String" jdbcType="VARCHAR" property="password" />
+        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
+        <id column="username" javaType="java.lang.String" jdbcType="VARCHAR" property="username"/>
+        <id column="password" javaType="java.lang.String" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     <sql id="Base_Column_List">
         id, username, password, email, phone, question, answer, role, create_time, update_time
@@ -39,7 +39,7 @@
         </if>
     </insert>
     <update id="updateUser">
-        UPDATE  ${user} SET
+        UPDATE ${user} SET
         <if test="username != null and username != ''">
             username = #{username},
         </if>
@@ -52,12 +52,12 @@
     </update>
     <select id="showUsers" resultType="map" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         FROM MMALL_USER
     </select>
     <select id="queryUsers" resultType="map" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column_List" />
+        <include refid="Base_Column_List"/>
         FROM MMALL_USER
     </select>
     <select id="insertDatas" parameterType="map" resultMap="BaseResultMap">
@@ -65,7 +65,22 @@
     </select>
     <select id="queryUser" parameterType="map" resultMap="user" resultType="list">
         SELECT
-        <include refid="user" />
+        <include refid="user"/>
         FROM ${user}
+    </select>
+    <select id="testBatchQuery" parameterType="map" resultMap="user" resultType="list">
+        SELECT
+        <include refid="user"/>
+        FROM USER WHERE ID IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    <select id="queryProblemProces" resultType="java.util.HashMap" parameterType="map">
+        SELECT * FROM T_SR_PROBLEM_PROCES WHERE WRKFM_ID = #{wrkfmId}
+    </select>
+    <!--测试批量查询-->
+    <select id="queryProRelSys" resultType="java.util.HashMap" parameterType="map">
+        SELECT * FROM T_SR_PROC_REL_SYS LIMIT #{start}, #{limit}
     </select>
 </mapper>

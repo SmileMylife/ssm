@@ -18,4 +18,10 @@ public interface ITestDao {
     public void updateUser(Map<String, Object> map);
     public void insertUser(Map<String, Object> map);
     public List<HashMap<String, Object>> queryUser(Map<String, Object> map);
+
+    public List<HashMap<String, Object>> testBatchQuery(Map<String, Object> params);
+
+    public HashMap<String, Object> queryProblemProces(Map<String, Object> map);
+
+    public List<HashMap<String, Object>> queryProRelSys(Map<String, Object> map);
 }

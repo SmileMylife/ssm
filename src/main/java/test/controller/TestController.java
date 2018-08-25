@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import test.autosend.AutoSendServiceFactory;
 import test.autosend.AutoSendThread;
 import test.autosend.IAutoSendServiceFactory;
+import test.common.GeneralException;
 import test.service.ITestService;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ZhangPei on 2018/7/23.
@@ -94,10 +98,10 @@ public class TestController {
     @RequestMapping(value = "testTransational", method = RequestMethod.POST)
     @ResponseBody
     //测试事务管理
-    public void testTransational(InputObject inputObject, OutputObject outputObject) {
+    public void testTransational(InputObject inputObject, OutputObject outputObject) throws GeneralException {
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("id", "1");
-        map.put("username", "ZHAIY");
+        map.put("username", "zhangsan");
         map.put("password", "12313");
         map.put("user", "user");    //表名
         inputObject.setParams(map);
@@ -120,6 +124,22 @@ public class TestController {
         iTestService.switchDatasource(inputObject, outputObject);
         List<HashMap<String, Object>> beans = outputObject.getBeans();
         System.out.println(beans.toString());
+    }
+
+
+    //测试批量操作
+    @RequestMapping(value = "testBatchOperator", method = RequestMethod.POST)
+    @ResponseBody
+    public void testBatchOperator() {
+        iTestService.testBatchQuery();
+    }
+
+
+    //测试线程池
+    @RequestMapping(value = "testThreadPool", method = RequestMethod.POST)
+    @ResponseBody
+    public void testThreadPool() {
+        iTestService.testThreadPool();
     }
 
 }

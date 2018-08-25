@@ -54,5 +54,23 @@ public class TestLinkedList {
         String s2 = JSONObject.toJSONString(new Integer(1));
         System.out.println(s2);
 
+        Test test = new Test();
+        Test test1 = new Test();
+        test.setI(50);
+        int i = test1.getI();
+        System.out.println(i);
+    }
+}
+
+
+class Test {
+    private static int i = 10;
+
+    public void setI(int i) {
+        Test.i = i;
+    }
+
+    public int getI() {
+        return i;
     }
 }
