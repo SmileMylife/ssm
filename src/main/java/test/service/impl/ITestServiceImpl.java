@@ -15,6 +15,7 @@ import test.service.ITestService;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -24,8 +25,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Transactional
 public class ITestServiceImpl implements ITestService {
-    private final ArrayList<Map<String, Object>> result = new ArrayList();
-    private List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+    private List<Map<String, Object>> result;
+    private List<Map<String, Object>> list;
 
     @Autowired
     private ITestDao itestDao;
@@ -79,10 +80,11 @@ public class ITestServiceImpl implements ITestService {
 
     @Override
     public void testThreadPool() {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 4, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(3));
+        final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 4, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(3));
         threadPoolExecutor.execute(new Runnable() {
             @Override
             public void run() {
+                result = new CopyOnWriteArrayList<Map<String, Object>>();      //如果不使用这种方式创建list，则该list的大小将会叠加
                 HashMap<String, Object> params = new HashMap<String, Object>();
                 long start = System.currentTimeMillis();
 //                final ArrayList<Map<String, Object>> result = new ArrayList();
@@ -105,6 +107,7 @@ public class ITestServiceImpl implements ITestService {
 
                 long end = System.currentTimeMillis();
                 System.out.println("启动一个线程查询用时" + (end - start));
+
             }
         });
 
@@ -114,25 +117,62 @@ public class ITestServiceImpl implements ITestService {
                 long start = System.currentTimeMillis();
                 String wrkfmId = "";
                 HashMap<String, Object> problemProcesParams = new HashMap<String, Object>();
-                while (true) {
-                    if (list.size() < 10000) {
-                        Iterator<Map<String, Object>> iterator = result.iterator();
-                        while (iterator.hasNext()) {
-                            Map<String, Object> next = iterator.next();
-                            wrkfmId = MapUtils.getString(next, "WRKFM_ID");
-                            problemProcesParams.put("wrkfmId", wrkfmId);
-                            HashMap<String, Object> resultMap = itestDao.queryProblemProces(problemProcesParams);
-                            next.put("hightTmpltElem", MapUtils.getString(resultMap, "WRKFM_ID"));
-                            list.add(next);
-                            result.remove(next);
-                        }
-                    }else {
-                        break;
+                list = new LinkedList<Map<String, Object>>();
+                int i = 0;
+                while (i < 10000) {       //list大小没有释放掉，需要定位原因
+                    Iterator<Map<String, Object>> iterator = result.iterator();
+                    if (iterator == null) {
+                        continue;
+                    }
+                    while (iterator.hasNext()) {
+                        Map<String, Object> next = iterator.next();
+                        wrkfmId = MapUtils.getString(next, "WRKFM_ID");
+                        problemProcesParams.put("wrkfmId", wrkfmId);
+                        HashMap<String, Object> resultMap = itestDao.queryProblemProces(problemProcesParams);
+                        next.put("hightTmpltElem", MapUtils.getString(resultMap, "WRKFM_ID"));
+                        i++;
                     }
                 }
                 long end = System.currentTimeMillis();
-                System.out.println("导出所有数据所需时间为：" + (end - start));
+                System.out.println("导出所有数据所需时间为：" + (end - start) + "；导出的数据大小为：" + result.size());
             }
         });
+    }
+
+    @Override
+    public void testMybatis() {
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        for (int i = 1; i < 10001; i++) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("user", "user");
+            map.put("id", i);
+            map.put("username", "zhangpeii" + i);
+            map.put("password", "mimam" + i);
+            list.add(map);
+        }
+
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("user", "user");
+        map.put("list", list);
+
+        /*HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("user", "user");
+        map.put("id", "1");
+        map.put("username", "zhangpei");
+        map.put("password", "mima");*/
+        long start = System.currentTimeMillis();
+        itestDao.testMybatis(list);
+//        itestDao.testCaseWhen(map);
+        long end = System.currentTimeMillis();
+
+        System.out.println("更新总用时" + (end - start));
+        /*HashMap<String, Object> map = new HashMap<String, Object>();
+        for (int i = 0; i < 10000; i++) {
+            map.put("user", "user");
+            map.put("id", i);
+            map.put("username", "username" + i);
+            map.put("password", "password" + i);
+            itestDao.insertUser(map);
+        }*/
     }
 }

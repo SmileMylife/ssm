@@ -2,6 +2,7 @@ package test.dao;
 
 import com.store.common.InputObject;
 import com.store.common.OutputObject;
+import org.apache.ibatis.annotations.Param;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,4 +25,11 @@ public interface ITestDao {
     public HashMap<String, Object> queryProblemProces(Map<String, Object> map);
 
     public List<HashMap<String, Object>> queryProRelSys(Map<String, Object> map);
+
+    public void updateByBatch(Map<String, Object> map);
+
+    public void testMybatis(@Param("list") List<Map<String,Object>> list);
+//    public void testMybatis(Map<String, Object> map);
+
+    public void testCaseWhen(Map<String, Object> list);
 }

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.misc.Request;
 import test.autosend.AutoSendServiceFactory;
 import test.autosend.AutoSendThread;
 import test.autosend.IAutoSendServiceFactory;
@@ -140,6 +141,13 @@ public class TestController {
     @ResponseBody
     public void testThreadPool() {
         iTestService.testThreadPool();
+    }
+
+    //测试mybatis
+    @RequestMapping(value = "testMybatis", method = RequestMethod.POST)
+    @ResponseBody
+    public void testMybatis() {
+        iTestService.testMybatis();
     }
 
 }

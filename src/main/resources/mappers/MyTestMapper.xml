@@ -26,11 +26,9 @@
     <sql id="user">
         id, username, password
     </sql>
-    <insert id="insertUser">
+    <insert id="insertUser" parameterType="map">
         INSERT INTO ${user} VALUES
-        <if test="id != null and id != ''">
             (NULL ,
-        </if>
         <if test="username != null and username != ''">
             #{username},
         </if>
@@ -50,6 +48,22 @@
             id = #{id}
         </where>
     </update>
+    <!--测试批量更新-->
+    <update id="updateByBatch">
+
+    </update>
+    <sql id="username">
+        username =
+        <foreach collection="usernameList" item="item" separator=" " open="CASE ID">
+            WHEN #{item.ID} THEN #{item.username}
+        </foreach>
+    </sql>
+    <sql id="password">
+        password =
+        <foreach collection="usernameList" item="item" separator=" " open="CASE ID" close="END">
+            WHEN #{item.ID} THEN #{item.password}
+        </foreach>
+    </sql>
     <select id="showUsers" resultType="map" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
@@ -83,4 +97,54 @@
     <select id="queryProRelSys" resultType="java.util.HashMap" parameterType="map">
         SELECT * FROM T_SR_PROC_REL_SYS LIMIT #{start}, #{limit}
     </select>
+
+    <!--测试参数为list-->
+    <update id="testMybatis" parameterType="list">
+        <foreach collection="list" item="param" separator=";">
+            UPDATE ${param.user}
+            <set>
+                <if test="param.username != null and param.username != ''">
+                    username = #{param.username},
+                </if>
+                <if test="param.password != null and param.password != ''">
+                    password = #{param.password},
+                </if>
+            </set>
+            WHERE id = #{param.id}
+        </foreach>
+    </update>
+    <!--caseWhen形式更新-->
+    <update id="testCaseWhen" parameterType="java.util.Map">
+        UPDATE ${user}
+        <set>
+            <trim prefix="id= CASE id" suffix="END,">
+                <foreach collection="list" item="param">
+                    <if test="param.id != null and id != ''">
+                        WHEN #{param.id} THEN #{param.id}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="username = CASE id" suffix="END,">
+                <foreach collection="list" item="param">
+                    <if test="param.username != null and param.username != ''">
+                        WHEN #{param.} THEN #{param.username}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="password = CASE id" suffix="END,">
+                <foreach collection="list" item="param">
+                    <if test="param.password != null and param.password != ''">
+                        WHEN #{param.id} THEN #{param.password}
+                    </if>
+                </foreach>
+            </trim>
+        </set>
+        <where>
+            id in
+            <foreach collection="list" item="param" separator="," open="(" close=")">
+                #{param.id}
+            </foreach>
+        </where>
+    </update>
+
 </mapper>

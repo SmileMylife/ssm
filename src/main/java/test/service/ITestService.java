@@ -17,4 +17,6 @@ public interface ITestService {
     public void testBatchQuery();
 
     public void testThreadPool();
+
+    void testMybatis();
 }
