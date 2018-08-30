@@ -141,7 +141,7 @@ public class ITestServiceImpl implements ITestService {
 
     @Override
     public void testMybatis() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        /*List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         for (int i = 1; i < 10001; i++) {
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("user", "user");
@@ -155,18 +155,18 @@ public class ITestServiceImpl implements ITestService {
         map.put("user", "user");
         map.put("list", list);
 
-        /*HashMap<String, Object> map = new HashMap<String, Object>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("user", "user");
         map.put("id", "1");
         map.put("username", "zhangpei");
-        map.put("password", "mima");*/
+        map.put("password", "mima");
         long start = System.currentTimeMillis();
         itestDao.testMybatis(list);
-//        itestDao.testCaseWhen(map);
+        itestDao.testCaseWhen(map);
         long end = System.currentTimeMillis();
 
         System.out.println("更新总用时" + (end - start));
-        /*HashMap<String, Object> map = new HashMap<String, Object>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
         for (int i = 0; i < 10000; i++) {
             map.put("user", "user");
             map.put("id", i);
@@ -174,5 +174,26 @@ public class ITestServiceImpl implements ITestService {
             map.put("password", "password" + i);
             itestDao.insertUser(map);
         }*/
+        /*HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("user", "user");
+        map.put("id", 1);
+        map.put("username", "中兴通讯");
+        map.put("password", "123");
+        itestDao.testDouHao(map);*/
+
+        ArrayList<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 1000; i++) {
+            map.put("user", "user");
+            map.put("id", i);
+            map.put("username", "username" + i);
+            map.put("password", "password" + i);
+//            list.add(map);
+            itestDao.updateUser(map);
+        }
+//        itestDao.testMybatis(list);
+        long end = System.currentTimeMillis();
+        System.out.println("更新用时：" + (end - start));
     }
 }

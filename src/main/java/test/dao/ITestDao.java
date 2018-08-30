@@ -32,4 +32,6 @@ public interface ITestDao {
 //    public void testMybatis(Map<String, Object> map);
 
     public void testCaseWhen(Map<String, Object> list);
+
+    public void testDouHao(Map<String, Object> map);
 }

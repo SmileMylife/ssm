@@ -147,4 +147,20 @@
         </where>
     </update>
 
+    <!--测试update中有逗号分隔符-->
+    <update id="testDouHao" parameterType="map">
+        UPDATE ${user}
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="createtime != null and createtime != ''">
+                createtime = #{createtime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>
