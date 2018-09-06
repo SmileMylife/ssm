@@ -196,4 +196,10 @@ public class ITestServiceImpl implements ITestService {
         long end = System.currentTimeMillis();
         System.out.println("更新用时：" + (end - start));
     }
+
+    @Override
+    public void testPessimistic() {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        itestDao.testPessimistic(map);
+    }
 }

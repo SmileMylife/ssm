@@ -18,5 +18,7 @@ public interface ITestService {
 
     public void testThreadPool();
 
-    void testMybatis();
+    public void testMybatis();
+
+    public void testPessimistic();
 }

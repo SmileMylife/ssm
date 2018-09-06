@@ -3,9 +3,7 @@ package test.test;
 import com.store.common.InputObject;
 import org.apache.ibatis.session.SqlSession;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ZhangPei on 2018/8/28.

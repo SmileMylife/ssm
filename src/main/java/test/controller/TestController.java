@@ -150,5 +150,11 @@ public class TestController {
         iTestService.testMybatis();
     }
 
+    //测试悲观锁
+    @RequestMapping(value = "testPessimistic", method = RequestMethod.POST)
+    @ResponseBody
+    public void testPessimistic() {
+        iTestService.testPessimistic();
+    }
 
 }

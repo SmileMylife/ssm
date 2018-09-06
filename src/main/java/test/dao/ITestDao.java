@@ -34,4 +34,10 @@ public interface ITestDao {
     public void testCaseWhen(Map<String, Object> list);
 
     public void testDouHao(Map<String, Object> map);
+
+    public void testOpimism();
+
+    public void selectOpimism(Map<String, Object> map);
+
+    public void testPessimistic(Map<String, Object> map);
 }

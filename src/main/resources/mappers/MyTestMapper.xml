@@ -163,4 +163,41 @@
         </set>
         WHERE id = #{id}
     </update>
+
+    <resultMap id="productMap" type="map">
+        <id property="id" column="id" jdbcType="int" javaType="integer" />
+        <id property="productName" column="product_name" jdbcType="varchar" javaType="string" />
+        <id property="amount" column="amount" jdbcType="bigint" javaType="integer" />
+    </resultMap>
+
+    <sql id="product_column">
+        id, product_name, amount
+    </sql>
+    <!--测试悲观锁-->
+    <update id="testPessimistic" parameterType="map">
+        UPDATE ${product_instock}
+        <set>
+            <if test="product_name != null and product_name != ''">
+                product_name = #{product_name},
+            </if>
+            <if test="amount != null and amount != ''">
+                amount = #{amount}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+    <!--测试乐观锁-->
+    <update id="testOpimism">
+
+    </update>
+    <select id="selectOpimism" parameterType="map" resultType="map" resultMap="productMap">
+        SELECT
+        <include refid="product_column" />
+        FROM ${product_instock}
+        <where>
+            id = #{id}
+        </where>
+    </select>
 </mapper>
