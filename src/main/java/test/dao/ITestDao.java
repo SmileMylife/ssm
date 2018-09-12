@@ -37,7 +37,7 @@ public interface ITestDao {
 
     public void testOpimism();
 
-    public void selectOpimism(Map<String, Object> map);
+    public Map<String, Object> selectProduct(Map<String, Object> map);
 
-    public void testPessimistic(Map<String, Object> map);
+    public int testPessimisticTransaction1(Map<String, Object> map);
 }

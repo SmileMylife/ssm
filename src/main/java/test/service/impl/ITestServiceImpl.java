@@ -198,8 +198,28 @@ public class ITestServiceImpl implements ITestService {
     }
 
     @Override
-    public void testPessimistic() {
+    public void testPessimisticTransaction1() {
         HashMap<String, Object> map = new HashMap<String, Object>();
-        itestDao.testPessimistic(map);
+        map.put("product_instock", "product_instock");
+        map.put("id", "1");
+        map.put("forUpdate", "FOR UPDATE");
+        itestDao.selectProduct(map);
+        System.out.print("此处为阻止事务提交");      //此处在更新时使用for update进行表级锁或者行级锁，取决于是否使用索引。
+    }
+
+    @Override
+    public void testPessimisticTransaction2() {
+        //事务一主要是更新操作，事务二则进行查询和更新操作
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("id", "1");
+        map.put("product_instock", "product_instock");
+        itestDao.selectProduct(map);
+
+        HashMap<String, Object> productMap = new HashMap<String, Object>();
+        productMap.put("product_instock", "product_instock");
+        productMap.put("id", "1");
+        productMap.put("product_name", "transation2");
+        productMap.put("amount", "10000");
+        int i = itestDao.testPessimisticTransaction1(productMap);
     }
 }

@@ -28,7 +28,7 @@
     </sql>
     <insert id="insertUser" parameterType="map">
         INSERT INTO ${user} VALUES
-            (NULL ,
+        (NULL ,
         <if test="username != null and username != ''">
             #{username},
         </if>
@@ -164,21 +164,22 @@
         WHERE id = #{id}
     </update>
 
+    <!--产品表-->
     <resultMap id="productMap" type="map">
-        <id property="id" column="id" jdbcType="int" javaType="integer" />
-        <id property="productName" column="product_name" jdbcType="varchar" javaType="string" />
-        <id property="amount" column="amount" jdbcType="bigint" javaType="integer" />
+        <id property="id" column="id" jdbcType="INTEGER" javaType="INTEGER"/>
+        <id property="productName" column="product_name" jdbcType="VARCHAR" javaType="STRING"/>
+        <id property="amount" column="amount" jdbcType="BIGINT" javaType="DOUBLE"/>
     </resultMap>
 
     <sql id="product_column">
         id, product_name, amount
     </sql>
     <!--测试悲观锁-->
-    <update id="testPessimistic" parameterType="map">
+    <update id="testPessimisticTransaction1" parameterType="map">
         UPDATE ${product_instock}
         <set>
-            <if test="product_name != null and product_name != ''">
-                product_name = #{product_name},
+            <if test="productName != null and productName != ''">
+                product_name = #{productName},
             </if>
             <if test="amount != null and amount != ''">
                 amount = #{amount}
@@ -187,17 +188,25 @@
         <where>
             id = #{id}
         </where>
+        <if test="forUpdate != null and forUpdate != ''">
+            FOR UPDATE
+        </if>
     </update>
     <!--测试乐观锁-->
     <update id="testOpimism">
 
     </update>
-    <select id="selectOpimism" parameterType="map" resultType="map" resultMap="productMap">
+
+    <!--查询产品-->
+    <select id="selectProduct" parameterType="map" resultType="map" resultMap="productMap">
         SELECT
-        <include refid="product_column" />
+        <include refid="product_column"/>
         FROM ${product_instock}
         <where>
             id = #{id}
         </where>
+        <if test="forUpdate != null and forUpdate != ''">
+            FOR UPDATE
+        </if>
     </select>
 </mapper>

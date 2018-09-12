@@ -20,5 +20,7 @@ public interface ITestService {
 
     public void testMybatis();
 
-    public void testPessimistic();
+    public void testPessimisticTransaction1();
+
+    public void testPessimisticTransaction2();
 }

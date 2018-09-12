@@ -150,11 +150,18 @@ public class TestController {
         iTestService.testMybatis();
     }
 
-    //测试悲观锁
-    @RequestMapping(value = "testPessimistic", method = RequestMethod.POST)
+    //测试悲观锁（此处为事务一）
+    @RequestMapping(value = "testPessimisticTransaction1", method = RequestMethod.POST)
     @ResponseBody
-    public void testPessimistic() {
-        iTestService.testPessimistic();
+    public void testPessimisticTransaction1() {
+        iTestService.testPessimisticTransaction1();
+    }
+
+    //测试悲观锁（此处为事务二）
+    @RequestMapping(value = "testPessimisticTransaction2", method = RequestMethod.POST)
+    @ResponseBody
+    public void testPessimisticTransaction2() {
+        iTestService.testPessimisticTransaction2();
     }
 
 }
