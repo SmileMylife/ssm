@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.store.common.InputObject;
 import com.store.common.OutputObject;
 import com.store.pojo.User;
+import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import test.autosend.IAutoSendServiceFactory;
 import test.common.GeneralException;
 import test.service.ITestService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -28,7 +30,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ZhangPei on 2018/7/23.
  */
-@Transactional
 @Controller
 public class TestController {
 
@@ -164,4 +165,21 @@ public class TestController {
         iTestService.testPessimisticTransaction2();
     }
 
+    @RequestMapping(value = "testUnionRequest", method = RequestMethod.POST)
+    @ResponseBody
+    public void testUnionRequest(HttpServletRequest httpServletRequest) {
+        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
+        InputObject inputObject = new InputObject();
+        HashMap<String, Object> params = inputObject.getParams();
+        Set<String> keys = parameterMap.keySet();
+        for (String key : keys) {
+            String[] values = parameterMap.get(key);
+            if (values == null) {
+                params.put(key, null);
+            } else {
+                params.put(key, values.length > 0 ? values[0] : null);
+            }
+        }
+        System.out.println(inputObject);
+    }
 }
