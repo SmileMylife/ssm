@@ -182,4 +182,10 @@ public class TestController {
         }
         System.out.println(inputObject);
     }
+
+    @RequestMapping(value = "testParamsFilter", method = RequestMethod.POST)
+    @ResponseBody
+    public void testParamsFilter(InputObject inputObject, OutputObject outputObject, String provCode, String tenantId) {
+        System.out.println(inputObject + provCode + tenantId);
+    }
 }

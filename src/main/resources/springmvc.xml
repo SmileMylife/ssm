@@ -55,4 +55,9 @@
         <!-- 指定视图路径后缀 -->
         <property name="suffix" value=".html" />
     </bean>
+
+    <!--配置拦截器用于进行参数封装-->
+    <mvc:interceptors>
+        <bean id="paramInterceptor" class="test.interceptor.ParamInterceptor" />
+    </mvc:interceptors>
 </beans>

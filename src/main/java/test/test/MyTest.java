@@ -29,5 +29,19 @@ public class MyTest {
             beans.add(map3);
         }
         System.out.println("beans的内容为：" + beans);
+
+
+        Map<String, Object> map2 = new HashMap<String, Object>();
+        InputObject inputObject = new InputObject();
+        map2.put("inputObject", inputObject);
+        inputObject.getParams().put("123", "123");
+        Object object = map2.get("inputObject");
+
+        System.out.println(object.toString());
+        if (object instanceof InputObject) {
+            InputObject object1 = (InputObject) object;
+            HashMap<String, Object> params = object1.getParams();
+            System.out.println(params);
+        }
     }
 }
