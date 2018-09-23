@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.dao.IDatasourceInter">
+    <sql id="baseColumn">
+        id, dbKey, driverClassName, url, username, password
+    </sql>
+    <!--查询多数据源-->
+    <select id="queryDatasources" resultType="test.pojo.DatasourcesClass" parameterType="map">
+        SELECT
+        <include refid="baseColumn"/>
+        FROM ${t_sr_datasource}
+    </select>
+</mapper>
