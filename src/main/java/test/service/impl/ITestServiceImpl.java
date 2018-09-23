@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ZhangPei on 2018/7/28.
  */
-@Service
 @Transactional
+@Service
 public class ITestServiceImpl implements ITestService {
     private List<Map<String, Object>> result;
     private List<Map<String, Object>> list;
@@ -33,7 +33,9 @@ public class ITestServiceImpl implements ITestService {
 
     @Override
     public void showUsers(InputObject inputObject, OutputObject outputObject) throws IOException {
-        List<HashMap<String, Object>> beans = itestDao.queryUsers(inputObject, outputObject);
+
+        HashMap<String, Object> params = inputObject.getParams();
+        List<HashMap<String, Object>> beans = itestDao.queryUsers(params);
         outputObject.setBeans(beans);
 
     }

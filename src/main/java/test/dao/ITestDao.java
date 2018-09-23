@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface ITestDao {
     public void showUsers(InputObject inputObject, OutputObject outputObject) throws IOException;   //走实现类
-    public List<HashMap<String, Object>> queryUsers(InputObject inputObject, OutputObject outputObject);        //走接口
+    public List<HashMap<String, Object>> queryUsers(Map<String, Object> params);        //走接口
     public void insertDatas(Map<String, Object> map);
     public void updateUser(Map<String, Object> map);
     public void insertUser(Map<String, Object> map);

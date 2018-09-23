@@ -6,6 +6,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -15,10 +16,11 @@ import java.util.HashMap;
  */
 @Component
 @Aspect
+@Order(0)
 public class BusiAop {
 
     //定义切点
-    @Pointcut("execution(* test.service.impl.ITestServiceImpl.switchDatasource(..))")
+    @Pointcut("execution(* test.service.impl.ITestServiceImpl.*(..))")
     public void aspect() {
         System.out.println("切点");
     }

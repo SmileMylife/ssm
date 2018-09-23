@@ -5,27 +5,24 @@ import com.alibaba.fastjson.JSONObject;
 import com.store.common.InputObject;
 import com.store.common.OutputObject;
 import com.store.pojo.User;
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.Request;
-import test.autosend.AutoSendServiceFactory;
+import org.springframework.web.multipart.MultipartFile;
 import test.autosend.AutoSendThread;
 import test.autosend.IAutoSendServiceFactory;
 import test.common.GeneralException;
 import test.service.ITestService;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by ZhangPei on 2018/7/23.
@@ -84,7 +81,9 @@ public class TestController {
     //测试显示用户列表
     @RequestMapping(value = "/showUsers", method = RequestMethod.POST)
     @ResponseBody
-    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject) throws IOException {
+    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject, String provCode) throws IOException {
+        HashMap<String, Object> params = inputObject.getParams();
+        params.put("provCode", provCode);
         iTestService.showUsers(inputObject, outputObject);
         return outputObject;
     }
@@ -113,8 +112,26 @@ public class TestController {
     //测试文件上传
     @RequestMapping(value = "fileUpload", method = RequestMethod.POST)
     @ResponseBody
-    public void fileUpload(InputObject inputObject, OutputObject outputObject) {
+    public void fileUpload(InputObject inputObject, OutputObject outputObject, HttpServletRequest httpServletRequest, @RequestParam(value = "file")MultipartFile multipartFile, HttpServletResponse httpServletResponse) throws IOException {
+        ServletInputStream inputStream = httpServletRequest.getInputStream();
 
+
+        InputStream fileInputStream = multipartFile.getInputStream();
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File("a.jpg")));
+        int read;
+        while (true) {
+            read = fileInputStream.read();
+            if (read > -1) {
+                bufferedOutputStream.write(read);
+            } else {
+                break;
+            }
+        }
+
+        httpServletResponse.getWriter().write("1232132131");
+        String username = httpServletRequest.getParameter("username");
+        System.out.println(username);
     }
 
     //测试动态切库
