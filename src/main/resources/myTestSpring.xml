@@ -171,8 +171,8 @@
     <bean id="dbSwitchService" class="test.dbswitch.DbSwitchServiceImpl">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
-                <entry key="00030002" value-ref="00030002dataSource" />
-                <entry key="00030016" value-ref="00030016dataSource" />
+                <entry key="00030002" value-ref="ngwf_tj_sit" />
+                <entry key="00030016" value-ref="ngwf_yn_sit" />
                 <entry key="store" value-ref="store" />
             </map>
         </property>

@@ -22,8 +22,6 @@ import java.util.Map;
  * 动态切库实现类
  * Created by ZhangPei on 2018/8/9.
  */
-@Component
-@Order(-1)
 public class DbSwitchServiceImpl extends AbstractRoutingDataSource {
     private final Logger logger = LoggerFactory.getLogger(DbSwitchServiceImpl.class);
 
