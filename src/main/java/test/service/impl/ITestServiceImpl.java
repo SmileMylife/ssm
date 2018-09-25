@@ -61,7 +61,7 @@ public class ITestServiceImpl implements ITestService {
     //测试动态切库
     @Override
     public void switchDatasource(InputObject inputObject, OutputObject outputObject) {
-        String provCode = DataSourceHandle.getProvCode();
+        String provCode = DataSourceHandle.getDbKey();
         System.out.println("当前省份编码" + provCode);
         HashMap<String, Object> params = inputObject.getParams();
         List<HashMap<String, Object>> users = itestDao.queryUser(params);

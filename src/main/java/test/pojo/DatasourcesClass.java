@@ -1,9 +1,12 @@
 package test.pojo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 数据库数据源实体类
  * Created by ZhangPei on 2018/9/23.
  */
+@Component
 public class DatasourcesClass {
     private Integer id;
     private String dbKey;

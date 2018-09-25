@@ -26,14 +26,14 @@ public class BusiAop {
     }
 
     @Before(value = "aspect()")
-    public void getProvCode(JoinPoint joinPoint) {
+    public void getDbKey(JoinPoint joinPoint) {
         //在进入service方法之前拿到参数列表
         Object[] args = joinPoint.getArgs();
         //假设此处入参统一为inputobject,outputobject
         InputObject inputObject = (InputObject) args[0];
         HashMap<String, Object> params = inputObject.getParams();
-        System.out.println("执行前置通知" + MapUtils.getString(params, "provCode"));
+        System.out.println("执行前置通知" + MapUtils.getString(params, "dbKey"));
         //将参数放入threadLocal
-        DataSourceHandle.setProvCode(MapUtils.getString(params, "provCode"));
+        DataSourceHandle.setDbKey(MapUtils.getString(params, "dbKey"));
     }
 }

@@ -16,6 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import test.autosend.AutoSendThread;
 import test.autosend.IAutoSendServiceFactory;
 import test.common.GeneralException;
+import test.dao.IDatasourceInter;
+import test.dao.ITestDao;
+import test.dbswitch.DbSwitchServiceImpl;
+import test.dbswitch.MyClass;
 import test.service.ITestService;
 
 import javax.servlet.ServletInputStream;
@@ -35,6 +39,12 @@ public class TestController {
 
     @Autowired
     private ITestService iTestService;
+
+    @Autowired
+    private MyClass myClass;
+
+    @Autowired
+    private DbSwitchServiceImpl dbSwitchService;
 
     @RequestMapping(value = "/parseJson", method = RequestMethod.POST)
     @ResponseBody
@@ -81,9 +91,9 @@ public class TestController {
     //测试显示用户列表
     @RequestMapping(value = "/showUsers", method = RequestMethod.POST)
     @ResponseBody
-    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject, String provCode) throws IOException {
+    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject, String dbKey) throws IOException {
         HashMap<String, Object> params = inputObject.getParams();
-        params.put("provCode", provCode);
+        params.put("dbKey", dbKey);
         iTestService.showUsers(inputObject, outputObject);
         return outputObject;
     }
@@ -137,8 +147,8 @@ public class TestController {
     //测试动态切库
     @RequestMapping(value = "switchDatasource", method = RequestMethod.POST)
     @ResponseBody
-    public void switchDatasource(InputObject inputObject, OutputObject outputObject, String provCode) {
-        inputObject.getParams().put("provCode", provCode);
+    public void switchDatasource(InputObject inputObject, OutputObject outputObject, String dbKey) {
+        inputObject.getParams().put("dbKey", dbKey);
         inputObject.getParams().put("user", "user");
         iTestService.switchDatasource(inputObject, outputObject);
         List<HashMap<String, Object>> beans = outputObject.getBeans();
