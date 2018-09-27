@@ -15,9 +15,6 @@ public class ParamInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
         String[] provCodes = parameterMap.get("provCode");
-        if (provCodes == null) {
-
-        }
         System.out.println("处理器前置执行开始，前台入参为：" + parameterMap);
         return true;
     }

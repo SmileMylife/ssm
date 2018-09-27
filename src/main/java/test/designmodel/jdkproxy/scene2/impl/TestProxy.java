@@ -1,6 +1,6 @@
-package test.jdkproxy.scene2.impl;
+package test.designmodel.jdkproxy.scene2.impl;
 
-import test.jdkproxy.scene2.Person;
+import test.designmodel.jdkproxy.scene2.Person;
 
 import java.lang.reflect.Proxy;
 

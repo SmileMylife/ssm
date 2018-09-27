@@ -39,6 +39,10 @@
                 </property>
             </bean>
         </mvc:message-converters>
+        <!--参数映射器-->
+        <mvc:argument-resolvers>
+            <bean class="test.paramresolver.ParameterResolver"></bean>
+        </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
     <!-- 文件上传 -->

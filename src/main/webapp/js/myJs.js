@@ -245,4 +245,10 @@ var func = returnFunc();
 console.log(func);
 
 alert(func(1, 2));*/
-console.log(4969 + 680 + 650 + 650);
+// console.log(4969 + 680 + 650 + 650);
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    }
+});

@@ -8,8 +8,8 @@ import java.util.List;
  * Created by ZhangPei on 2018/6/22.
  */
 public class InputObject {
-    private String serviceCode;
-    private String method;
+    private String serviceCode = "";
+    private String method = "";
     private HashMap<String, Object> params = new HashMap<String, Object>();
     private ArrayList<HashMap<String, Object>> beans = new ArrayList<HashMap<String, Object>>();
 
@@ -43,5 +43,15 @@ public class InputObject {
 
     public void setBeans(ArrayList<HashMap<String, Object>> beans) {
         this.beans = beans;
+    }
+
+    @Override
+    public String toString() {
+        return "InputObject{" +
+                "serviceCode='" + serviceCode + '\'' +
+                ", method='" + method + '\'' +
+                ", params=" + params +
+                ", beans=" + beans +
+                '}';
     }
 }

@@ -16,13 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import test.autosend.AutoSendThread;
 import test.autosend.IAutoSendServiceFactory;
 import test.common.GeneralException;
-import test.dao.IDatasourceInter;
-import test.dao.ITestDao;
 import test.dbswitch.DbSwitchServiceImpl;
 import test.dbswitch.MyClass;
+import test.paramresolver.InputObjectAnnotation;
 import test.service.ITestService;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletInputStream;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -91,9 +92,7 @@ public class TestController {
     //测试显示用户列表
     @RequestMapping(value = "/showUsers", method = RequestMethod.POST)
     @ResponseBody
-    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject, String dbKey) throws IOException {
-        HashMap<String, Object> params = inputObject.getParams();
-        params.put("dbKey", dbKey);
+    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject) throws IOException {
         iTestService.showUsers(inputObject, outputObject);
         return outputObject;
     }
@@ -110,25 +109,29 @@ public class TestController {
     @ResponseBody
     //测试事务管理
     public void testTransational(InputObject inputObject, OutputObject outputObject) throws GeneralException {
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("id", "1");
-        map.put("username", "zhangsan");
-        map.put("password", "12313");
-        map.put("user", "user");    //表名
-        inputObject.setParams(map);
         iTestService.testTransational(inputObject, outputObject);
     }
 
     //测试文件上传
     @RequestMapping(value = "fileUpload", method = RequestMethod.POST)
     @ResponseBody
-    public void fileUpload(InputObject inputObject, OutputObject outputObject, HttpServletRequest httpServletRequest, @RequestParam(value = "file")MultipartFile multipartFile, HttpServletResponse httpServletResponse) throws IOException {
+    public void fileUpload(InputObject inputObject, OutputObject outputObject, HttpServletRequest httpServletRequest, @RequestParam(value = "file") MultipartFile multipartFile, HttpServletResponse httpServletResponse) throws IOException {
         ServletInputStream inputStream = httpServletRequest.getInputStream();
+        String servletPath = httpServletRequest.getServletPath();               //结果：/fileUpload
+        ServletContext servletContext = httpServletRequest.getServletContext();
+        String realPath = servletContext.getRealPath("/");            //结果：/Users/smile_mylife/....绝对路径
+        String contextPath = httpServletRequest.getContextPath();       //结果：/ssm
 
+        String name = multipartFile.getOriginalFilename();
+        int index = name.lastIndexOf(".");
+        String extandType = name.substring(index + 1, name.length());
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid.toString();
 
         InputStream fileInputStream = multipartFile.getInputStream();
         BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File("a.jpg")));
+        String path = "uploads/";
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(path + fileName + "." + extandType)));
         int read;
         while (true) {
             read = fileInputStream.read();
@@ -138,18 +141,46 @@ public class TestController {
                 break;
             }
         }
+        bufferedInputStream.close();
+        bufferedOutputStream.close();
 
-        httpServletResponse.getWriter().write("1232132131");
+        httpServletResponse.setCharacterEncoding("UTF-8");
+        httpServletResponse.setContentType("text/html;charset=utf-8");
+        httpServletResponse.getWriter().write(new String("向页面返回文字内容".getBytes("UTF-8"), "utf-8"));
         String username = httpServletRequest.getParameter("username");
         System.out.println(username);
+    }
+
+    @RequestMapping(value = "fileDownload", method = RequestMethod.GET)
+    public void fileDownload(HttpServletResponse response, String fileName) throws Exception {
+        //方法一
+        if (StringUtils.isBlank(fileName)) {
+            throw new Exception("文件下载失败，文件名为空");
+        }
+        FileInputStream fileInputStream = new FileInputStream(new File(fileName));
+        ServletOutputStream outputStream = response.getOutputStream();
+        response.setContentType("application/octet-stream");
+        response.addHeader("Content-Disposition", "attachment; filename" + "testfilename");
+
+        int lenth;
+        while ((lenth = fileInputStream.read()) > -1) {
+            outputStream.write(lenth);
+            outputStream.flush();
+        }
+        outputStream.close();
+
+        /*//方法二
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        httpHeaders.setContentDispositionFormData("attachment", "filename.jpg");
+        byte[] bytes = FileUtils.readFileToByteArray(new File("a.jpg"));
+        return new ResponseEntity<byte[]>(bytes, httpHeaders, HttpStatus.OK);*/
     }
 
     //测试动态切库
     @RequestMapping(value = "switchDatasource", method = RequestMethod.POST)
     @ResponseBody
-    public void switchDatasource(InputObject inputObject, OutputObject outputObject, String dbKey) {
-        inputObject.getParams().put("dbKey", dbKey);
-        inputObject.getParams().put("user", "user");
+    public void switchDatasource(InputObject inputObject, OutputObject outputObject) {
         iTestService.switchDatasource(inputObject, outputObject);
         List<HashMap<String, Object>> beans = outputObject.getBeans();
         System.out.println(beans.toString());
@@ -210,9 +241,18 @@ public class TestController {
         System.out.println(inputObject);
     }
 
+    //测试参数过滤器
     @RequestMapping(value = "testParamsFilter", method = RequestMethod.POST)
     @ResponseBody
     public void testParamsFilter(InputObject inputObject, OutputObject outputObject, String provCode, String tenantId) {
         System.out.println(inputObject + provCode + tenantId);
+    }
+
+    //测试参数封装
+    @RequestMapping(value = "/testParamPackage", method = RequestMethod.POST)
+    @ResponseBody
+    public void testParamPackage(@RequestParam Map<String, Object> param, HttpServletRequest httpServletRequest, @InputObjectAnnotation InputObject inputObject) {
+        System.out.println("inputobject内容为：" + inputObject.toString());
+        System.out.println("封装结束后的map：" + param);
     }
 }

@@ -1,6 +1,4 @@
-package test.jdkproxy.scene2.impl;
-
-import test.jdkproxy.scene2.Person;
+package test.designmodel.jdkproxy.scene2.impl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

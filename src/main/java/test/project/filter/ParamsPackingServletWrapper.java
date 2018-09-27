@@ -9,21 +9,25 @@ import java.util.Map;
  * Created by ZhangPei on 2018/9/12.
  */
 public class ParamsPackingServletWrapper extends HttpServletRequestWrapper {
-    private Map<String, Object> newParams = new HashMap<String, Object>();
+    private Map<String, String[]> newParams = new HashMap<String, String[]>();
 
     public ParamsPackingServletWrapper(HttpServletRequest request) {
         super(request);
-        this.newParams.putAll(request.getParameterMap());
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        this.newParams.putAll(parameterMap);
     }
 
-    public void setParameter(String key, Object value) {
+    public void setParameter(String key, String[] value) {
         newParams.put(key, value);
     }
 
     @Override
     public String getParameter(String key) {
-        String s = newParams.get(key).toString();
-        System.out.println(s);
-        return newParams.get(key).toString();
+        return newParams.get(key)[0];       //默认取数组第一个值
+    }
+
+    @Override
+    public Map<String, String[]> getParameterMap() {
+        return newParams;
     }
 }

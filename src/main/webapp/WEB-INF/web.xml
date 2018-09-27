@@ -31,6 +31,7 @@
     <filter>
         <filter-name>paramFilter</filter-name>
         <filter-class>test.project.filter.PackageFilter</filter-class>
+        <!--<filter-class>test.project.filter.GeneralFilter</filter-class>-->
     </filter>
     <filter-mapping>
         <filter-name>paramFilter</filter-name>

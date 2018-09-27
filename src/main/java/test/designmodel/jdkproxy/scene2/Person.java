@@ -1,4 +1,4 @@
-package test.jdkproxy.scene2;
+package test.designmodel.jdkproxy.scene2;
 
 /**
  * Created by ZhangPei on 2018/6/28.

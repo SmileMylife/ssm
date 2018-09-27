@@ -1,15 +1,12 @@
 package test.project.filter;
 
-import com.store.common.InputObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by ZhangPei on 2018/6/22.
@@ -24,27 +21,22 @@ public class PackageFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        //此处假设需要获取到请求参数中的provCode参数，然后转换成后台使用的dbKey参数，此时就需要将原有参数做修改
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        Map<String, String[]> parameterMap = httpServletRequest.getParameterMap();
-        InputObject inputObject = new InputObject();
-        HashMap<String, Object> params = inputObject.getParams();
-        Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
+        String provCode = servletRequest.getParameter("provCode");
 
-        //封装进入inputobject
-        for (Map.Entry<String, String[]> entry : entries) {
-            String key = entry.getKey();
-            String[] values = entry.getValue();
-            if (values == null) {
-                params.put(key, null);
-            } else {
-                params.put(key, values.length > 0 ? values[0] : null);
-            }
-        }
 
-        params.put("test", "test");
         ParamsPackingServletWrapper paramsPackingServletWrapper = new ParamsPackingServletWrapper(httpServletRequest);
-        paramsPackingServletWrapper.setParameter("inputObject", "123213123");
-        filterChain.doFilter(httpServletRequest, servletResponse);
+        String[] param = new String[1];
+        param[0] = provCode;
+        paramsPackingServletWrapper.setParameter("dbKey", param);
+        System.out.println("执行参数封装过滤器");
+        Map<String, String[]> parameterMap = paramsPackingServletWrapper.getParameterMap();
+//        filterChain.doFilter(paramsPackingServletWrapper, servletResponse);
+
+        //假设在处理完请求后，需要向响应页面写入处理成功字样
+        servletResponse.setContentType("text/html;charset=utf-8");
+        servletResponse.getWriter().write("处理成功");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package test.jdkproxy.scene1;
+package test.designmodel.jdkproxy.scene1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,7 +1,7 @@
-package test.jdkproxy.scene1.impl;
+package test.designmodel.jdkproxy.scene1.impl;
 
 import org.springframework.stereotype.Service;
-import test.jdkproxy.scene1.*;
+import test.designmodel.jdkproxy.scene1.*;
 
 /**
  * Created by ZhangPei on 2018/6/28.
