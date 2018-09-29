@@ -1,6 +1,7 @@
 package test.test;
 
 import java.io.*;
+import java.util.HashMap;
 
 /**
  * Created by ZhangPei on 2018/9/20.
@@ -22,8 +23,14 @@ public class FileCopy {
         }
         fileOutputStream.close();*/
 
-        int[] ints = new int[12];
+        /*int[] ints = new int[12];
 
-        System.out.println(ints[0]);
+        System.out.println(ints[0]);*/
+
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        HashMap<String, Object> map1 = new HashMap<String, Object>();
+
+        map1.putAll(map);
+
     }
 }

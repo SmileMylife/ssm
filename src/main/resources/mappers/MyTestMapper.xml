@@ -10,8 +10,8 @@
         <id column="question" javaType="java.lang.String" property="question" jdbcType="VARCHAR"/>
         <id column="answer" javaType="java.lang.String" property="answer" jdbcType="VARCHAR"/>
         <id column="role" javaType="java.lang.Integer" property="role" jdbcType="INTEGER"/>
-        <id column="create_time" javaType="java.util.Date" property="createTime" jdbcType="TIMESTAMP"/>
-        <id column="update_time" javaType="java.util.Date" property="updateTime" jdbcType="TIMESTAMP"/>
+        <id column="create_time" javaType="java.lang.String" property="createTime" jdbcType="TIMESTAMP"/>
+        <id column="update_time" javaType="java.lang.String" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <!--add by zhangpei-->
     <resultMap id="user" type="map">

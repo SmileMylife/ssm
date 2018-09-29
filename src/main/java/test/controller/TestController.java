@@ -92,7 +92,7 @@ public class TestController {
     //测试显示用户列表
     @RequestMapping(value = "/showUsers", method = RequestMethod.POST)
     @ResponseBody
-    public OutputObject showUsers(InputObject inputObject, OutputObject outputObject) throws IOException {
+    public OutputObject showUsers(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) throws IOException {
         iTestService.showUsers(inputObject, outputObject);
         return outputObject;
     }
@@ -244,7 +244,7 @@ public class TestController {
     //测试参数过滤器
     @RequestMapping(value = "testParamsFilter", method = RequestMethod.POST)
     @ResponseBody
-    public void testParamsFilter(InputObject inputObject, OutputObject outputObject, String provCode, String tenantId) {
+    public void testParamsFilter(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject, String provCode, String tenantId) {
         System.out.println(inputObject + provCode + tenantId);
     }
 
@@ -252,7 +252,7 @@ public class TestController {
     @RequestMapping(value = "/testParamPackage", method = RequestMethod.POST)
     @ResponseBody
     public void testParamPackage(@RequestParam Map<String, Object> param, HttpServletRequest httpServletRequest, @InputObjectAnnotation InputObject inputObject) {
-        System.out.println("inputobject内容为：" + inputObject.toString());
-        System.out.println("封装结束后的map：" + param);
+        HashMap<String, Object> params = inputObject.getParams();
+        System.out.println("入参params的值为：" + params);
     }
 }

@@ -28,15 +28,15 @@
     </filter-mapping>
 
     <!--参数封装过滤器-->
-    <filter>
+    <!--<filter>
         <filter-name>paramFilter</filter-name>
         <filter-class>test.project.filter.PackageFilter</filter-class>
-        <!--<filter-class>test.project.filter.GeneralFilter</filter-class>-->
+        &lt;!&ndash;<filter-class>test.project.filter.GeneralFilter</filter-class>&ndash;&gt;
     </filter>
     <filter-mapping>
         <filter-name>paramFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>-->
 
     <!--容器监听器-->
     <listener>
