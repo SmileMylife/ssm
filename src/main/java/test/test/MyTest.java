@@ -1,7 +1,7 @@
 package test.test;
 
+import com.alibaba.fastjson.JSONObject;
 import com.store.common.InputObject;
-import org.apache.ibatis.session.SqlSession;
 
 import java.util.*;
 
@@ -31,7 +31,7 @@ public class MyTest {
         System.out.println("beans的内容为：" + beans);
 
 
-        Map<String, Object> map2 = new HashMap<String, Object>();
+        /*Map<String, Object> map2 = new HashMap<String, Object>();
         InputObject inputObject = new InputObject();
         map2.put("inputObject", inputObject);
         inputObject.getParams().put("123", "123");
@@ -43,5 +43,25 @@ public class MyTest {
             HashMap<String, Object> params = object1.getParams();
             System.out.println(params);
         }
+
+        String[] strings = {"1", "2", "3"};
+
+        JSONObject jsonObject = null;
+        String s = jsonObject.toString();
+
+        System.out.println("转JSON结果：" + s);*/
+//        testMoreParams(strings);
+
+        int i = "223".compareTo("124");
+        System.out.println("比较结果：" + i);
+
+    }
+
+
+    public static void testMoreParams(String... str) {
+        System.out.println(str[0]);
+        System.out.println(str[1]);
+        System.out.println(str[10]);
+
     }
 }

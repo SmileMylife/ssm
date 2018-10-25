@@ -255,4 +255,10 @@ public class TestController {
         HashMap<String, Object> params = inputObject.getParams();
         System.out.println("入参params的值为：" + params);
     }
+
+    //测试页面跳转
+    @RequestMapping(value = "/breakToProducts", method = RequestMethod.GET)
+    public String breakToProducts(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
+        return "products";
+    }
 }

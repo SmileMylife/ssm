@@ -1,7 +1,8 @@
 package test.test;
 
 import java.io.*;
-import java.util.HashMap;
+import java.net.URLDecoder;
+import java.util.List;
 
 /**
  * Created by ZhangPei on 2018/9/20.
@@ -27,10 +28,21 @@ public class FileCopy {
 
         System.out.println(ints[0]);*/
 
-        HashMap<String, Object> map = new HashMap<String, Object>();
+        /*HashMap<String, Object> map = new HashMap<String, Object>();
         HashMap<String, Object> map1 = new HashMap<String, Object>();
 
-        map1.putAll(map);
+        map1.putAll(map);*/
 
+        String s = "";
+        String decode = URLDecoder.decode(s);
+        System.out.println(decode);
+
+        List<String> test = (List<String>) test();
+        List<String> strings = (List<String>) null;
+        strings.add("0");
+    }
+
+    public static Object test() {
+        return null;
     }
 }
