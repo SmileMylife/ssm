@@ -27,6 +27,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -260,5 +261,17 @@ public class TestController {
     @RequestMapping(value = "/breakToProducts", method = RequestMethod.GET)
     public String breakToProducts(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
         return "products";
+    }
+
+    //测试分表，经测试AOP中对参数进行更改时，操作的就是执行该方法时的入参，可以在dubug模式下进行查看变量地址，发现在aop中该变量所指向的地址相同。
+    @RequestMapping(value = "/testSplitTable", method = RequestMethod.POST)
+    public String testSplitTable(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
+        //前台传入一个wrkfmId和dbKey进来，后台传入一个日期
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:dd");
+        String format = simpleDateFormat.format(new Date());
+        HashMap<String, Object> params = inputObject.getParams();
+        params.put("CRT_TIME", format);
+        iTestService.testSplitTable(inputObject, outputObject);
+        return "";
     }
 }

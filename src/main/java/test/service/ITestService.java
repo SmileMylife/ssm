@@ -23,4 +23,6 @@ public interface ITestService {
     public void testPessimisticTransaction1();
 
     public void testPessimisticTransaction2();
+
+    public void testSplitTable(InputObject inputObject, OutputObject outputObject);
 }

@@ -209,4 +209,9 @@
             FOR UPDATE
         </if>
     </select>
+
+    <!--测试分表-->
+    <select id="testSplitTable" resultType="hashmap" parameterType="map">
+        SELECT * FROM ${table_name} WHERE WRKFM_ID = #{wrkfmId}
+    </select>
 </mapper>

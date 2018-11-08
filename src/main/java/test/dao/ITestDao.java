@@ -40,4 +40,6 @@ public interface ITestDao {
     public Map<String, Object> selectProduct(Map<String, Object> map);
 
     public int testPessimisticTransaction1(Map<String, Object> map);
+
+    HashMap<String, Object> testSplitTable(HashMap<String, Object> params);
 }

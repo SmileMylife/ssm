@@ -224,4 +224,12 @@ public class ITestServiceImpl implements ITestService {
         productMap.put("amount", "10000");
         int i = itestDao.testPessimisticTransaction1(productMap);
     }
+
+    @Override
+    public void testSplitTable(InputObject inputObject, OutputObject outputObject) {
+        HashMap<String, Object> params = inputObject.getParams();
+        System.out.println("断点调试");
+        HashMap<String, Object> map = itestDao.testSplitTable(params);
+        System.out.println("查询结果为：" + map);
+    }
 }
