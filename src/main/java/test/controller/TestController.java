@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import test.autosend.AutoSendThread;
-import test.autosend.IAutoSendServiceFactory;
+import test.project.autosend.AutoSendThread;
+import test.project.autosend.IAutoSendServiceFactory;
 import test.common.GeneralException;
-import test.dbswitch.DbSwitchServiceImpl;
-import test.dbswitch.MyClass;
-import test.paramresolver.InputObjectAnnotation;
+import test.learn.dbswitch.DbSwitchServiceImpl;
+import test.learn.dbswitch.MyClass;
+import test.learn.paramresolver.InputObjectAnnotation;
 import test.service.ITestService;
 
 import javax.servlet.ServletContext;

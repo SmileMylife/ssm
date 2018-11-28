@@ -4,12 +4,11 @@ import com.store.common.InputObject;
 import com.store.common.OutputObject;
 import org.apache.commons.collections.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import test.common.GeneralException;
 import test.dao.ITestDao;
-import test.dbswitch.DataSourceHandle;
+import test.learn.dbswitch.DataSourceHandle;
 import test.service.ITestService;
 
 import java.io.IOException;

@@ -5,7 +5,7 @@
         id, dbKey, driverClassName, url, username, password
     </sql>
     <!--查询多数据源-->
-    <select id="queryDatasources" resultType="test.pojo.DatasourcesClass" parameterType="map">
+    <select id="queryDatasources" resultType="test.learn.dbswitch.DatasourcesClass" parameterType="map">
         SELECT
         <include refid="baseColumn"/>
         FROM ${t_sr_datasource}

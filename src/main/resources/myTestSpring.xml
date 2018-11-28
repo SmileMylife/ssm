@@ -149,7 +149,7 @@
 
 
     <!--数据源切换实现类-->
-    <!--<bean id="dbSwitchService" class="test.dbswitch.DbSwitchServiceImpl">
+    <!--<bean id="dbSwitchService" class="test.learn.dbswitch.DbSwitchServiceImpl">
         <property name="targetDataSources">
             <map key-type="java.lang.String">
                 <entry key="00030002" value-ref="ngwf_tj_sit" />

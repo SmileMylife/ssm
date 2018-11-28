@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by ZhangPei on 2018/7/12.
+ * 执行业务代码时，自动打印入参及出参日志
  */
 @Component
 @Aspect

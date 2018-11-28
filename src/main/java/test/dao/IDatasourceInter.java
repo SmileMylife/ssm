@@ -1,6 +1,6 @@
 package test.dao;
 
-import test.pojo.DatasourcesClass;
+import test.learn.dbswitch.DatasourcesClass;
 
 import java.util.List;
 import java.util.Map;

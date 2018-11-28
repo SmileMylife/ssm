@@ -41,7 +41,7 @@
         </mvc:message-converters>
         <!--参数映射器-->
         <mvc:argument-resolvers>
-            <bean class="test.paramresolver.ParameterResolver"></bean>
+            <bean class="test.learn.paramresolver.ParameterResolver"></bean>
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
 

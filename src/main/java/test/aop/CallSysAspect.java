@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by ZhangPei on 2018/5/12.
+ * 在调用外系统接口时，实现使用本地测试还是调用远程接口
  */
 @Component
 @Aspect
 public class CallSysAspect {
-    @Pointcut("execution(* test.aop.IcallOutSysServiceImpl.callSys(..))")
+    @Pointcut("execution(* test.service.impl.IcallOutSysServiceImpl.callSys(..))")
     public void aspect() {
 
     }
@@ -46,7 +47,7 @@ public class CallSysAspect {
             return "本地测试数据2";
         }
     }
-    @Pointcut("execution(* test.aop.IcallOutSysServiceImpl.callOutSys(..))")
+    @Pointcut("execution(* test.service.impl.IcallOutSysServiceImpl.callOutSys(..))")
     public void aspect2() {
 
     }

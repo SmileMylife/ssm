@@ -1,19 +1,5 @@
 package test.dao.impl;
 
-import com.store.common.InputObject;
-import com.store.common.OutputObject;
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-import test.dao.ITestDao;
-import test.dbswitch.DataSourceHandle;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by ZhangPei on 2018/7/28.
  */
