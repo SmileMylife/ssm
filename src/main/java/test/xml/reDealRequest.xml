@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<InterBOSS>
+    <SvcCont>
+        <![CDATA[
+            <?xml version="1.0" encoding="utf-8" ?>
+            <HandlingRsp>
+                <IndictSeq>${IndictSeq}</IndictSeq>
+                <HandlingComment>${HandlingComment}</HandlingComment>
+                <HandlingDept>${HandlingDept}</HandlingDept>
+                <HandlingStaff>${HandlingStaff}</HandlingStaff>
+                <PhoneNum>${PhoneNum}</PhoneNum>
+            </HandlingRsp>
+        ]]>
+    </SvcCont>
+</InterBOSS>

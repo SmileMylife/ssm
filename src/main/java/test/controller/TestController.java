@@ -35,6 +35,7 @@ import java.util.*;
  */
 @Controller
 public class TestController {
+    private int num = 0;
 
     @Autowired
     private IAutoSendServiceFactory autoSendServiceFactory;
@@ -265,6 +266,7 @@ public class TestController {
 
     //测试分表，经测试AOP中对参数进行更改时，操作的就是执行该方法时的入参，可以在dubug模式下进行查看变量地址，发现在aop中该变量所指向的地址相同。
     @RequestMapping(value = "/testSplitTable", method = RequestMethod.POST)
+    @ResponseBody
     public String testSplitTable(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
         //前台传入一个wrkfmId和dbKey进来，后台传入一个日期
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:dd");
@@ -273,5 +275,16 @@ public class TestController {
         params.put("CRT_TIME", format);
         iTestService.testSplitTable(inputObject, outputObject);
         return "";
+    }
+
+    //测试两个请求同时发出，后台代码在进行处理的时候是否会阻塞，测试结果显示并不会阻塞。
+    @RequestMapping(value = "/testRequestPrevent", method = RequestMethod.GET)
+    @ResponseBody
+    public void testRequestPrevent(String name) {
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                System.out.println(name + num++);
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * Created by ZhangPei on 2018/9/13.
+ * 处理拦截器在执行controller之前进行相关操作需要
  */
 public class ParamInterceptor implements HandlerInterceptor {
     @Override

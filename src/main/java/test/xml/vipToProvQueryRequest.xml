@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<InterBOSS>
+    <SvcCont>
+        <![CDATA[
+            <?xml version="1.0" encoding="utf-8" ?>
+            <QueryProvinceRsp>
+                <IndictSeq>
+                    ${IndictSeq}
+                </IndictSeq>
+            </QueryProvinceRsp>
+        ]]>
+    </SvcCont>
+</InterBOSS>
