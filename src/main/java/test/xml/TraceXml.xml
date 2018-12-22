@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<InterBOSS>
+    <SvcCont>
+        <![CDATA[
+            <?xml version="1.0" encoding="utf-8" ?>
+            <HandlingRsp>
+                <IndictSeq>20181210CSVC6206939616</IndictSeq>
+                <HandlingComment>处理内容</HandlingComment>
+                <HandlingDept>00030100-重要客户中心</HandlingDept>
+                <HandlingStaff>ZKT0001-屈凡</HandlingStaff>
+                <PhoneNum>18291165916</PhoneNum>
+            </HandlingRsp>
+        ]]>
+    </SvcCont>
+</InterBOSS>

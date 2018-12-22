@@ -1,11 +1,15 @@
 package test.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,23 +18,38 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(2)
 public class LoggerAspect {
-    private static final Logger logger = LoggerFactory.getLogger(LoggerAspect.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(void test.project.OutSysServiceRequestAccept.testRest(..))")
+    @Pointcut("execution(void test.service.ITestService.testPrintLog(..))")
     public void aspect() {
 
     }
 
-    /*@Around("aspect()")
-    public void printLog(ProceedingJoinPoint proceedingJoinPoint) {
 
-    }*/
+    /**
+     * 在业务方法执行前后打印入参和出参
+     * @param proceedingJoinPoint
+     */
+    @Around("aspect()")
+    public void printLog(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        Object[] args = proceedingJoinPoint.getArgs();
+        Object target = proceedingJoinPoint.getTarget();
 
-    @Before("aspect()")
-    public void printLog(JoinPoint joinPoint) {
-        System.out.println("前置通知执行");
-        logger.error(String.valueOf(joinPoint.getArgs()[0]));
+        target.getClass().getMethods();
+
+        logger.error("执行业务方法入参为：" + args[0]);
+
+        logger.error("目标类为：" + target);
+
+        Object proceed = proceedingJoinPoint.proceed();
+
+        System.out.println("打印执行记录");
+
+        logger.error("执行业务方法之后方法返回值：" + proceed);
+
+        logger.error("执行业务方法之后出参为：" + args[1]);
+
     }
-
 }

@@ -231,4 +231,9 @@ public class ITestServiceImpl implements ITestService {
         HashMap<String, Object> map = itestDao.testSplitTable(params);
         System.out.println("查询结果为：" + map);
     }
+
+    @Override
+    public void testPrintLog(InputObject inputObject, OutputObject outputObject) {
+        System.out.println("执行相关的业务代码");
+    }
 }

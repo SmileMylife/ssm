@@ -287,4 +287,11 @@ public class TestController {
             }
         }
     }
+
+    //测试日志打印
+    @RequestMapping(value = "/testPrintLog", method = RequestMethod.GET)
+    @ResponseBody
+    public void testPrintLog(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
+        iTestService.testPrintLog(inputObject, outputObject);
+    }
 }

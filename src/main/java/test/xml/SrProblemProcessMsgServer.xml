@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://172.16.79.176:40021/services/SrProblemProcessMsgServer" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://172.16.79.176:40021/services/SrProblemProcessMsgServer" xmlns:intf="http://172.16.79.176:40021/services/SrProblemProcessMsgServer" xmlns:tns1="http://problemProcess.inter.sr.xz.cs.asiainfo.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://problemProcess.inter.sr.xz.cs.asiainfo.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="main">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="args" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mainResponse">
+    <complexType/>
+   </element>
+   <element name="comprehensiveMsgQuery">
+    <complexType>
+     <sequence>
+      <element name="inParam" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="comprehensiveMsgQueryResponse">
+    <complexType>
+     <sequence>
+      <element name="comprehensiveMsgQueryReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="comprehensiveMsgQueryRequest">
+
+      <wsdl:part element="tns1:comprehensiveMsgQuery" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainRequest">
+
+      <wsdl:part element="tns1:main" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="comprehensiveMsgQueryResponse">
+
+      <wsdl:part element="tns1:comprehensiveMsgQueryResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="mainResponse">
+
+      <wsdl:part element="tns1:mainResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SrProblemProcessMsgServer">
+
+      <wsdl:operation name="main">
+
+         <wsdl:input message="impl:mainRequest" name="mainRequest"/>
+
+         <wsdl:output message="impl:mainResponse" name="mainResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="comprehensiveMsgQuery">
+
+         <wsdl:input message="impl:comprehensiveMsgQueryRequest" name="comprehensiveMsgQueryRequest"/>
+
+         <wsdl:output message="impl:comprehensiveMsgQueryResponse" name="comprehensiveMsgQueryResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SrProblemProcessMsgServerSoapBinding" type="impl:SrProblemProcessMsgServer">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="main">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mainRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mainResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="comprehensiveMsgQuery">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="comprehensiveMsgQueryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="comprehensiveMsgQueryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SrProblemProcessMsgServerService">
+
+      <wsdl:port binding="impl:SrProblemProcessMsgServerSoapBinding" name="SrProblemProcessMsgServer">
+
+         <wsdlsoap:address location="http://172.16.79.176:40021/services/SrProblemProcessMsgServer"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
