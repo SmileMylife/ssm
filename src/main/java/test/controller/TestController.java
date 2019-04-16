@@ -294,4 +294,10 @@ public class TestController {
     public void testPrintLog(@InputObjectAnnotation InputObject inputObject, OutputObject outputObject) {
         iTestService.testPrintLog(inputObject, outputObject);
     }
+
+    @RequestMapping(value = "/testXss", method = RequestMethod.POST)
+    @ResponseBody
+    public String testXss(String xssCode) {
+        return xssCode;
+    }
 }

@@ -1,5 +1,6 @@
 package com.store.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,12 +8,17 @@ import java.util.List;
 /**
  * Created by ZhangPei on 2018/6/22.
  */
-public class OutputObject {
+public class OutputObject implements Cloneable, Serializable {
     private String rtnCode;
     private String rtnMsg;
     private HashMap<String, Object> bean = new HashMap<String, Object>();
     private List<HashMap<String, Object>> beans = new ArrayList<HashMap<String, Object>>();
     private Object object;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public String getRtnCode() {
         return rtnCode;
@@ -52,5 +58,16 @@ public class OutputObject {
 
     public void setObject(Object object) {
         this.object = object;
+    }
+
+    @Override
+    public String toString() {
+        return "OutputObject{" +
+                "rtnCode='" + rtnCode + '\'' +
+                ", rtnMsg='" + rtnMsg + '\'' +
+                ", bean=" + bean +
+                ", beans=" + beans +
+                ", object=" + object +
+                '}';
     }
 }

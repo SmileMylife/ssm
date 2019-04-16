@@ -1,5 +1,7 @@
 package test.test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.store.common.InputObject;
 
@@ -29,6 +31,7 @@ public class MyTest {
             beans.add(map3);
         }
         System.out.println("beans的内容为：" + beans);
+        System.out.println("测试\r\n" + "呵呵");
 
 
         /*Map<String, Object> map2 = new HashMap<String, Object>();
@@ -54,6 +57,25 @@ public class MyTest {
 
         int i = "223".compareTo("124");
         System.out.println("比较结果：" + i);
+
+        //测试jsonarray
+        ArrayList<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        HashMap<String, Object> map2 = new HashMap<String, Object>();
+        map2.put("provCode", "00030015");
+        result.add(map2);
+        String s = JSON.toJSONString(result);
+        JSONArray jsonArray = JSONArray.parseArray(s);
+
+        ArrayList<Map<String, Object>> result1 = new ArrayList<Map<String, Object>>();
+        HashMap<String, Object> map3 = new HashMap<String, Object>();
+        map3.put("tenantId", "100000");
+        result1.add(map3);
+
+        jsonArray.addAll(result1);
+
+        System.out.println(jsonArray);
+
+
 
     }
 
