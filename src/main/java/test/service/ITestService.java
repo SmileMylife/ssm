@@ -27,4 +27,6 @@ public interface ITestService {
     public void testSplitTable(InputObject inputObject, OutputObject outputObject);
 
     public void testPrintLog(InputObject inputObject, OutputObject outputObject);
+
+    void testInsert();
 }

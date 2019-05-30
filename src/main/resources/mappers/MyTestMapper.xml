@@ -27,14 +27,24 @@
         id, username, password
     </sql>
     <insert id="insertUser" parameterType="map">
-        INSERT INTO ${user} VALUES
-        (NULL ,
-        <if test="username != null and username != ''">
-            #{username},
-        </if>
-        <if test="password != null and username != ''">
-            #{password})
-        </if>
+        INSERT INTO ${user}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">
+                #{username},
+            </if>
+            <if test="password != null and username != ''">
+                #{password})
+            </if>
+        </trim>
     </insert>
     <update id="updateUser">
         UPDATE ${user} SET

@@ -162,7 +162,7 @@ public class TestController {
         FileInputStream fileInputStream = new FileInputStream(new File(fileName));
         ServletOutputStream outputStream = response.getOutputStream();
         response.setContentType("application/octet-stream");
-        response.addHeader("Content-Disposition", "attachment; filename" + "testfilename");
+        response.addHeader("Content-Disposition", "attachment; filename=" + "testfilename");
 
         int lenth;
         while ((lenth = fileInputStream.read()) > -1) {
@@ -299,5 +299,11 @@ public class TestController {
     @ResponseBody
     public String testXss(String xssCode) {
         return xssCode;
+    }
+
+    @RequestMapping(value = "/testInsert", method = RequestMethod.POST)
+    @ResponseBody
+    public void testInsert() {
+        iTestService.testInsert();
     }
 }

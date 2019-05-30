@@ -236,4 +236,12 @@ public class ITestServiceImpl implements ITestService {
     public void testPrintLog(InputObject inputObject, OutputObject outputObject) {
         System.out.println("执行相关的业务代码");
     }
+
+    @Override
+    public void testInsert() {
+        Map<String, Object> map = new HashMap();
+        map.put("username", "zhangpei");
+        map.put("password", "123");
+        itestDao.insertUser(map);
+    }
 }
