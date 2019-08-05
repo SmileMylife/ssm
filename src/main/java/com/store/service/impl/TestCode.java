@@ -18,7 +18,8 @@ public class TestCode {
         map.put("pass", "123");
         String s1 = JSONObject.toJSONString(map);
         System.err.println(s1);
-        Map<String, Object> parse = (Map<String, Object>) JSON.parse(s1);
+//        Map<String, Object> parse = (Map<String, Object>) JSON.parse(s1);
+        Map parse = JSON.parseObject(s1, Map.class);
         System.err.println(parse.get("username"));
 
     }

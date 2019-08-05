@@ -42,18 +42,20 @@
                 #{username},
             </if>
             <if test="password != null and username != ''">
-                #{password})
+                #{password}
             </if>
         </trim>
     </insert>
     <update id="updateUser">
-        UPDATE ${user} SET
-        <if test="username != null and username != ''">
-            username = #{username},
-        </if>
-        <if test="password != null and password != ''">
-            password = #{password}
-        </if>
+        UPDATE ${user}
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password}
+            </if>
+        </set>
         <where>
             id = #{id}
         </where>

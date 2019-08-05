@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import test.common.GeneralException;
 import test.dao.ITestDao;
 import test.learn.dbswitch.DataSourceHandle;
+import test.service.IOtherMethodService;
 import test.service.ITestService;
 
 import java.io.IOException;
@@ -30,6 +31,9 @@ public class ITestServiceImpl implements ITestService {
     @Autowired
     private ITestDao itestDao;
 
+    @Autowired
+    IOtherMethodService iOtherMethodService;
+
     @Override
     public void showUsers(InputObject inputObject, OutputObject outputObject) throws IOException {
 
@@ -40,19 +44,23 @@ public class ITestServiceImpl implements ITestService {
     }
 
     //测试事务的时候注意springMVC重复扫描的bean可能会盖掉之前spring创建的bean，可能这是两个容器，当开启事务管理的时候默认对spring容器中管理的内容进行事务管理。
+    //经测试，一个方法如果被事务管理，那么方法内部的其他数据库操作会被纳入管理中。
     @Override
     public void testTransational(InputObject inputObject, OutputObject outputObject) throws GeneralException {
         HashMap<String, Object> params = inputObject.getParams();
-        itestDao.updateUser(params);
+        params.put("id", "2");
+        params.put("username", "zhangpei");
+        params.put("user", "user");    //表名
+        iOtherMethodService.testTransationalCallOtherMehodForUpdate(params);    //调用了两个未进行事务管理的方法
         //此处模拟抛异常后事务是否会回滚
-        if (params.size() > 1) {
-            throw new GeneralException("运行时异常！");
-        }
         params.put("id", "2");
         params.put("username", "zhangpei");
         params.put("password", "123");
         params.put("user", "user");    //表名
-        itestDao.insertUser(params);
+        iOtherMethodService.testTransationalCallOtherMehodForInsert(params);
+        if (params.size() > 1) {
+            throw new RuntimeException("运行时异常！");
+        }
 
 //        throw new RuntimeException("运行时异常");
     }
@@ -239,7 +247,7 @@ public class ITestServiceImpl implements ITestService {
 
     @Override
     public void testInsert() {
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("username", "zhangpei");
         map.put("password", "123");
         itestDao.insertUser(map);

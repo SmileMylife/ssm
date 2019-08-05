@@ -33,13 +33,13 @@ public class FileCopy {
 
         map1.putAll(map);*/
 
-        String s = "";
+        /*String s = "";
         String decode = URLDecoder.decode(s);
         System.out.println(decode);
 
         List<String> test = (List<String>) test();
         List<String> strings = (List<String>) null;
-        strings.add("0");
+        strings.add("0");*/
     }
 
     public static Object test() {

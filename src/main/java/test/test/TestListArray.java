@@ -8,7 +8,7 @@ import java.util.LinkedList;
  */
 public class TestListArray {
     public static void main(String[] args) {
-        ArrayList<Object> arrayList = new ArrayList();
+        ArrayList<Object> arrayList = new ArrayList<Object>();
         LinkedList<Object> linkedList = new LinkedList<Object>();
 
         long start = System.currentTimeMillis();

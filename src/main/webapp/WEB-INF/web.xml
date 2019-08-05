@@ -48,7 +48,7 @@
     </context-param>
 
     <!--spirngmvc核心控制器-->
-    <!--<servlet>
+    <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -60,9 +60,9 @@
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping>-->
+    </servlet-mapping>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>axis</servlet-name>
         <servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
@@ -70,6 +70,6 @@
     <servlet-mapping>
         <servlet-name>axis</servlet-name>
         <url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
 </web-app>

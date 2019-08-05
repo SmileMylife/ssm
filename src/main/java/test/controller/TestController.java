@@ -55,7 +55,7 @@ public class TestController {
         if (StringUtils.isBlank(jsonString)) {
             return;
         }
-        List<Map<String, Object>> parse = (List<Map<String, Object>>) JSONObject.parse(jsonString);
+        List parse = JSONObject.parseObject(jsonString, List.class);
         for (int i = 0; i < parse.size(); i++) {
             System.out.println(parse.get(i));
         }
@@ -107,7 +107,7 @@ public class TestController {
         autoSendThread.run();
     }
 
-    @RequestMapping(value = "testTransational", method = RequestMethod.POST)
+    @RequestMapping(value = "/testTransational", method = RequestMethod.POST)
     @ResponseBody
     //测试事务管理
     public void testTransational(InputObject inputObject, OutputObject outputObject) throws GeneralException {
